@@ -4,6 +4,7 @@ import mergeImages from "merge-images";
 import { EmojiMetadata, emojiMetadataToFilename } from './types/emojiMetadata';
 import emojiConfig from "./emojiConfig.json";
 import { EmojiConfigFile } from './types/emojiConfigFile';
+import EmojiButton from './components/EmojiButton';
 
 const saveSvgAsPng = require('save-svg-as-png')
 
@@ -86,12 +87,12 @@ function App() {
   
   return (
     <div className="App">
-      <h1>Original Images</h1>
-      <>
+      <h1>Emojis</h1>
+      <div className='emoji-container'>
         {baseEmojis.map((emoji, index) => {
-          return <img key={emoji.unicode} width={100} src={emoji.url} />
+          return <EmojiButton emoji={emoji} key={index} />
         })}
-      </>
+      </div>
       <h1>Combined Image</h1>
       {src && <img width={300} src={src} alt="" />}
       <button onClick={() => {convertSVGToPng("./svgFiles/base/face_vomiting_color.svg")}}>Convert SVG to PNG</button>

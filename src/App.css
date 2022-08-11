@@ -1,38 +1,61 @@
+body {
+  background-color: rgb(233, 233, 233);
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.emoji-container {
+  display: inline-grid;
+  column-gap: 16px;
+  row-gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.emoji-box {
+  background-color: white;
+  color: rgb(80, 80, 80);
+
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px, rgba(0, 0, 0, 0.05) 0px 0.5px 1px;
+  transition: all 0.15s ease-out 0s;
+
+  border: none;
+
+  border-radius: 10px;
+  padding: 12px;
+  width: 96px;
+  height: 96px;
+  position: relative;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.emoji-box:hover {
+  cursor: pointer;
+  transform: translate3d(0px, -2px, 0px);
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 19px 43px, rgba(0, 0, 0, 0.18) 0px 4px 11px;
 }
 
-.App-link {
-  color: #61dafb;
+.emoji-box:active {
+  cursor: pointer;
+  transform: translate3d(0px, 1px, 0px);
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 19px 43px, rgba(0, 0, 0, 0.09) 0px 4px 11px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+.emoji-box.selected {
+  background: #c8c8c8;
+  -webkit-box-shadow: inset 0px 0px 5px #929292;
+     -moz-box-shadow: inset 0px 0px 5px #929292;
+          box-shadow: inset 0px 0px 5px #929292;
+   outline: none;
+}
+
+.emoji-box img {
+  width: 60px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
