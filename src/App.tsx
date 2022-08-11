@@ -13,6 +13,7 @@ function App() {
 
   const [src, setSrc] = useState<string>("");
   const [baseEmojis, setBaseEmojis] = useState<EmojiMetadata[]>([]);
+  const [selectedOption, setSelectedOption] = useState<EmojiMetadata>();
 
   useEffect(() => {
     emojiConfig.baseEmoji.map((emoji, index) => {
@@ -90,7 +91,7 @@ function App() {
       <h1>Emojis</h1>
       <div className='emoji-container'>
         {baseEmojis.map((emoji, index) => {
-          return <EmojiButton emoji={emoji} key={index} />
+          return <EmojiButton emoji={emoji} selectedOption={selectedOption} setSelectedOption={setSelectedOption} key={index} />
         })}
       </div>
       <h1>Combined Image</h1>

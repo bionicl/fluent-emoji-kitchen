@@ -31,7 +31,7 @@ body {
 
 .emoji-box:hover {
   cursor: pointer;
-  transform: translate3d(0px, -2px, 0px);
+  transform: translate3d(0px, -1px, 0px);
   box-shadow: rgba(0, 0, 0, 0.14) 0px 19px 43px, rgba(0, 0, 0, 0.18) 0px 4px 11px;
 }
 
@@ -45,14 +45,16 @@ body {
 
 .emoji-box.selected {
   background: #c8c8c8;
-  -webkit-box-shadow: inset 0px 0px 5px #929292;
-     -moz-box-shadow: inset 0px 0px 5px #929292;
-          box-shadow: inset 0px 0px 5px #929292;
+  pointer-events: none;
+  -webkit-box-shadow: inset 0px 0px 5px #7e7e7e;
+     -moz-box-shadow: inset 0px 0px 5px #7e7e7e;
+          box-shadow: inset 0px 0px 5px #7e7e7e;
    outline: none;
 }
 
 .emoji-box img {
   width: 60px;
+  user-select: none;
   margin: 0;
   position: absolute;
   top: 50%;
