@@ -6,6 +6,7 @@ import image1 from "./images/image-1.jpeg";
 import image2 from "./images/image-2.jpeg";
 import image3 from "./images/image-3.jpeg";
 import image4 from "./images/image-4.jpeg";
+const saveSvgAsPng = require('save-svg-as-png')
 
 function App() {
 
@@ -42,6 +43,17 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
   
+  const imageOptions = {
+    scale: 5,
+    encoderOptions: 1,
+    backgroundColor: "white"
+  };
+
+  function convertSVGToPng() {
+    saveSvgAsPng.svgAsPngUri(document.getElementById("svg-chart"), imageOptions).then((uri: any) => {
+      console.log(uri);
+    });
+  }
 
   return (
     <div className="App">
@@ -62,6 +74,11 @@ function App() {
       </ul>
       <h1>Combined Image</h1>
       {src && <img src={src} alt="" />}
+      <button onClick={() => {convertSVGToPng()}}>Convert SVG to PNG</button>
+      <svg id={"svg-chart"} viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="100%" height="100%"/>
+            <circle cx="50%" cy="50%" r="2" fill="white"/>
+          </svg>
       {/* <img src={src} id="combined-image" alt="" /> */}
     </div>
   );
