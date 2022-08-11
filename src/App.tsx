@@ -52,24 +52,35 @@ function App() {
   }, []);
   
   const imageOptions = {
-    scale: 5,
     encoderOptions: 1,
-    backgroundColor: "white"
+    scale: 4
   };
 
-  function convertSVGToPng() {
-    // var svg = require('./svgFiles/base/baseball_color.svg');
-    var parser = new DOMParser();
-    var doc = parser.parseFromString(baseball_color, "image/svg+xml");
-    const svg : SVGElement = doc.querySelector('svg') as SVGElement;
-    console.log(svg);
+  function returnSvgFileFromPath(path : string) {
+    return new Promise((resolve, reject) => {
+      import(`${path}`).then(obj => {
+        console.log(obj);
+  
+        fetch(obj.default)
+        .then(response => response.text())
+        .then(text => {
+          resolve(text);
+        })
+        .catch(err => {
+          reject("Error: " + err.message);
+        });
+      });
+    });
+  }
 
-    // var svg = parse('<svg width="200" height="200">' + '<circle cx="0" cy="20" r="70" fill="#D1495B" />' + '</svg>');
-    // console.log(svg);
-    var docu = document.getElementById('svg-chart');
-    console.log(svg instanceof SVGElement);
+  async function convertSVGToPng(path: string) {
+    const svgFile : string = await returnSvgFileFromPath(path) as string;
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(svgFile, "image/svg+xml");
+    const svg : SVGElement = doc.querySelector('svg') as SVGElement;
+
     saveSvgAsPng.svgAsPngUri(svg, imageOptions).then((uri: any) => {
-      console.log(uri);
+      setSrc(uri);
     });
   }
   
@@ -92,12 +103,7 @@ function App() {
       </ul>
       <h1>Combined Image</h1>
       {src && <img src={src} alt="" />}
-      <button onClick={() => {convertSVGToPng()}}>Convert SVG to PNG</button>
-      <svg id={"svg-chart"} viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" y="0" width="100%" height="100%"/>
-            <circle cx="50%" cy="50%" r="2" fill="white"/>
-          </svg>
-      {/* <img src={src} id="combined-image" alt="" /> */}
+      <button onClick={() => {convertSVGToPng("./svgFiles/base/face_vomiting_color.svg")}}>Convert SVG to PNG</button>
     </div>
   );
 
