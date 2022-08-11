@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import mergeImages from "merge-images";
+import { EmojiMetadata, emojiMetadataToFilename } from './types/emojiMetadata';
 import emojiConfig from "./emojiConfig.json";
+import { EmojiConfigFile } from './types/emojiConfigFile';
 
 const saveSvgAsPng = require('save-svg-as-png')
 
@@ -9,7 +11,7 @@ const saveSvgAsPng = require('save-svg-as-png')
 function App() {
 
   const [src, setSrc] = useState<string>("");
-  const [baseEmojis, setBaseEmojis] = useState<any[]>([]);
+  const [baseEmojis, setBaseEmojis] = useState<EmojiMetadata[]>([]);
 
   useEffect(() => {
     const image = '<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="47.4" height="40.65" viewBox="21 18.5 158 135.5"><path d="M25,50 l150,0 0,100 -150,0 z" stroke-width="4" stroke="black" fill="rgb(128,224,255)" fill-opacity="1" ></path><path d="M25,50 L175,150 M25,150 L175,50" stroke-width="4" stroke="black" fill="black" ></path><g transform="translate(0,0)" stroke-width="4" stroke="black" fill="none" ><circle cx="100" cy="30" r="7.5" fill="black" ></circle><circle cx="70" cy="30" r="7.5" fill="black" ></circle><circle cx="130" cy="30" r="7.5" fill="black" ></circle></g></svg>';
@@ -45,12 +47,12 @@ function App() {
       .then((src) => setSrc(src))
       .catch((err) => console.log(err));
 
-
     emojiConfig.baseEmoji.map((emoji, index) => {
-      const filePath = "./svgFiles/base/" + emoji;
+      const fileName = emojiMetadataToFilename(emoji);
+      const filePath = "./svgFiles/base/" + fileName;
       import(`${filePath}`).then(obj => {
         if (!baseEmojis.includes(obj.default)) {
-          setBaseEmojis(prevState => [...prevState, obj.default]);
+          setBaseEmojis(prevState => [...prevState, {...emoji, url: obj.default}]);
         }
       }).catch(err => {
         console.log(err);
@@ -94,7 +96,7 @@ function App() {
       <h1>Original Images</h1>
       <>
         {baseEmojis.map((emoji, index) => {
-          return <img key={emoji} width={100} src={emoji} />
+          return <img key={emoji.unicode} width={100} src={emoji.url} />
         })}
       </>
       <h1>Combined Image</h1>

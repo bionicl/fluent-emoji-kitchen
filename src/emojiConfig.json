@@ -1,9 +1,61 @@
 {
 	"baseEmoji": [
-		"baseball_color.svg",
-		"dolphin_color.svg",
-		"evergreen_tree_color.svg",
-		"eyes_color.svg",
-		"face_vomiting_color.svg"
+		{
+			"cldr": "face vomiting",
+			"fromVersion": "5.0",
+			"glyph": "🤮",
+			"glyphAsUtfInEmoticons": [
+				"puke"
+			],
+			"group": "Smileys & Emotion",
+			"keywords": [
+				"face vomiting",
+				"puke",
+				"sick",
+				"vomit"
+			],
+			"mappedToEmoticons": [
+				"puke"
+			],
+			"tts": "face vomiting",
+			"unicode": "1f92e"
+		},
+		{
+			"cldr": "eyes",
+			"fromVersion": "0.6",
+			"glyph": "👀",
+			"glyphAsUtfInEmoticons": [
+				"1f440_eyes"
+			],
+			"group": "People & Body",
+			"keywords": [
+				"eye",
+				"eyes",
+				"face"
+			],
+			"mappedToEmoticons": [
+				"1f440_eyes"
+			],
+			"tts": "eyes",
+			"unicode": "1f440"
+		},
+		{
+			"cldr": "dolphin",
+			"fromVersion": "0.6",
+			"glyph": "🐬",
+			"glyphAsUtfInEmoticons": [
+				"dolphin"
+			],
+			"group": "Animals & Nature",
+			"keywords": [
+				"dolphin",
+				"flipper"
+			],
+			"mappedToEmoticons": [
+				"dolphin"
+			],
+			"tts": "dolphin",
+			"unicode": "1f42c"
+		}
 	]
 }
