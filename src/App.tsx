@@ -6,17 +6,22 @@ import image1 from "./images/image-1.jpeg";
 import image2 from "./images/image-2.jpeg";
 import image3 from "./images/image-3.jpeg";
 import image4 from "./images/image-4.jpeg";
+import baseball_color from "./svgFiles/base/baseball_color.svg";
 const saveSvgAsPng = require('save-svg-as-png')
+
 
 function App() {
 
   const [src, setSrc] = useState<string>("");
 
   useEffect(() => {
+    const image = '<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="47.4" height="40.65" viewBox="21 18.5 158 135.5"><path d="M25,50 l150,0 0,100 -150,0 z" stroke-width="4" stroke="black" fill="rgb(128,224,255)" fill-opacity="1" ></path><path d="M25,50 L175,150 M25,150 L175,50" stroke-width="4" stroke="black" fill="black" ></path><g transform="translate(0,0)" stroke-width="4" stroke="black" fill="none" ><circle cx="100" cy="30" r="7.5" fill="black" ></circle><circle cx="70" cy="30" r="7.5" fill="black" ></circle><circle cx="130" cy="30" r="7.5" fill="black" ></circle></g></svg>';
+
+
     mergeImages([
       {
         src:
-          "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/hAy5odHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA1IDc5LjE2NDU5MCwgMjAyMC8xMi8wOS0xMTo1Nzo0NCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIyLjEgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjJFNzJERjk3Njc5MTFFQ0IyREQ4NEQyOUE1QTc0ODUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjJFNzJERkE3Njc5MTFFQ0IyREQ4NEQyOUE1QTc0ODUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGMkU3MkRGNzc2NzkxMUVDQjJERDg0RDI5QTVBNzQ4NSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGMkU3MkRGODc2NzkxMUVDQjJERDg0RDI5QTVBNzQ4NSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv/bAEMAAgEBAgEBAgICAgICAgIDBQMDAwMDBgQEAwUHBgcHBwYHBwgJCwkICAoIBwcKDQoKCwwMDAwHCQ4PDQwOCwwMDP/bAEMBAgICAwMDBgMDBgwIBwgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDP/AABEIAGQAZAMBEQACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAACf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAWAQEBAQAAAAAAAAAAAAAAAAAACAn/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCabYhPYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//Z",
+          "data:image/svg+xml;utf8," + image,
         x: 0,
         y: 0
       },
@@ -50,17 +55,19 @@ function App() {
   };
 
   function convertSVGToPng() {
-    saveSvgAsPng.svgAsPngUri(document.getElementById("svg-chart"), imageOptions).then((uri: any) => {
+    var svg = require('./svgFiles/base/baseball_color.svg');
+    console.log(baseball_color);
+    saveSvgAsPng.svgAsPngUri(baseball_color, imageOptions).then((uri: any) => {
       console.log(uri);
     });
   }
-
+  
   return (
     <div className="App">
       <h1>Original Images</h1>
       <ul>
         <li>
-          <img src={image1} alt="" />
+          <img src={require('./images/image-1.jpeg')} alt="" />
         </li>
         <li>
           <img src={image2} alt="" />

@@ -1,0 +1,3 @@
+{
+  "plugins": ["transform-svg-import-to-string"]
+}
