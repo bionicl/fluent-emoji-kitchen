@@ -7,6 +7,8 @@ import image2 from "./images/image-2.jpeg";
 import image3 from "./images/image-3.jpeg";
 import image4 from "./images/image-4.jpeg";
 import baseball_color from "./svgFiles/base/baseball_color.svg";
+import parse from 'html-react-parser';
+
 const saveSvgAsPng = require('save-svg-as-png')
 
 
@@ -17,6 +19,7 @@ function App() {
   useEffect(() => {
     const image = '<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="47.4" height="40.65" viewBox="21 18.5 158 135.5"><path d="M25,50 l150,0 0,100 -150,0 z" stroke-width="4" stroke="black" fill="rgb(128,224,255)" fill-opacity="1" ></path><path d="M25,50 L175,150 M25,150 L175,50" stroke-width="4" stroke="black" fill="black" ></path><g transform="translate(0,0)" stroke-width="4" stroke="black" fill="none" ><circle cx="100" cy="30" r="7.5" fill="black" ></circle><circle cx="70" cy="30" r="7.5" fill="black" ></circle><circle cx="130" cy="30" r="7.5" fill="black" ></circle></g></svg>';
 
+    // console.log(image);
 
     mergeImages([
       {
@@ -55,9 +58,17 @@ function App() {
   };
 
   function convertSVGToPng() {
-    var svg = require('./svgFiles/base/baseball_color.svg');
-    console.log(baseball_color);
-    saveSvgAsPng.svgAsPngUri(baseball_color, imageOptions).then((uri: any) => {
+    // var svg = require('./svgFiles/base/baseball_color.svg');
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(baseball_color, "image/svg+xml");
+    const svg : SVGElement = doc.querySelector('svg') as SVGElement;
+    console.log(svg);
+
+    // var svg = parse('<svg width="200" height="200">' + '<circle cx="0" cy="20" r="70" fill="#D1495B" />' + '</svg>');
+    // console.log(svg);
+    var docu = document.getElementById('svg-chart');
+    console.log(svg instanceof SVGElement);
+    saveSvgAsPng.svgAsPngUri(svg, imageOptions).then((uri: any) => {
       console.log(uri);
     });
   }
