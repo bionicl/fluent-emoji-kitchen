@@ -56,23 +56,37 @@ const CombinedImage = ({ selectedOption1, selectedOption2, imageVer }: Props) =>
 	async function mergeMultiple() {
 		if (selectedOption1 && selectedOption2) {
 			setLoading(true);
-			let image1, image2, x, y;
 
-			if ((selectedOption1.background != undefined && selectedOption2.background == undefined) || (selectedOption1.foreground == undefined && selectedOption2.foreground != undefined)) {
-				image1 = await convertSVGToPng("./svgFiles/" + selectedOption1.background!.image) as string;
-				const position = selectedOption1.background!.positions.find(pos => pos.position == selectedOption2.foreground?.position);
-				const size = position?.size;
-				x = position?.x;
-				y = position?.y;
-				image2 = await convertSVGToPng("./svgFiles/" + selectedOption2.foreground!.image, size) as string;
-			} else {
-				image1 = await convertSVGToPng("./svgFiles/" + selectedOption2.background!.image) as string;
-				const position = selectedOption2.background!.positions.find(pos => pos.position == selectedOption1.foreground?.position);
-				const size = position?.size;
-				x = position?.x;
-				y = position?.y;
-				image2 = await convertSVGToPng("./svgFiles/" + selectedOption1.foreground!.image, size) as string;
+			let option1 = selectedOption1;
+			let option2 = selectedOption2;
+			if (!((option1.background != undefined && option2.background == undefined) || (option1.foreground == undefined && option2.foreground != undefined))) {
+				if (!(option1.background && option2.foreground && option2.foreground.overrideFace == false)) {
+					[option1, option2] = [option2, option1];
+				}
 			}
+
+			// Get images
+			let backgroundImage = option1.background!.image;
+			let foregroundImage = option2.foreground!.image;
+			if (option2.foreground!.overrideFace == false) {
+				if (option1.background?.imageWithFace) {
+					backgroundImage = option1.background!.imageWithFace;
+				} else if (option2.foreground!.imageWithFace){
+					foregroundImage = option2.foreground!.imageWithFace;
+				}
+			}
+			// get coordinates, size
+			let position = option1.background!.positions.find(pos => pos.position == option2.foreground?.position);
+			if (option2.foreground!.overrideFace == false) {
+				const searchResult = option1.background!.positions.find(pos => pos.position == "above_face");
+				position = searchResult ? searchResult : position;
+			}
+			const size = position?.size;
+			const x = position?.x;
+			const y = position?.y;
+
+			const image1 = await convertSVGToPng("./svgFiles/" + backgroundImage) as string;
+			const image2 = await convertSVGToPng("./svgFiles/" + foregroundImage, size) as string;
 
 			mergeImages([
 				{

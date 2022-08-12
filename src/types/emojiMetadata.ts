@@ -13,6 +13,7 @@ export type EmojiMetadata = {
 	// overlay info
 	background?: {
 		image: string,
+		imageWithFace?: string,
 		positions: {
 			position: string,
 			x: number,
@@ -22,6 +23,8 @@ export type EmojiMetadata = {
 	},
 	foreground?: {
 		image: string,
+		overrideFace: boolean,
+		imageWithFace?: string, //only if overrideFace is false
 		position: string,
 	}
 

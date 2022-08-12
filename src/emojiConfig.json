@@ -21,6 +21,7 @@
 			"unicode": "1f92e",
 			"background": {
 				"image": "parts/face/face.svg",
+				"imageWithFace": "emoji/face_vomiting_color.svg",
 				"positions": [
 					{
 						"position": "top",
@@ -38,7 +39,8 @@
 			},
 			"foreground": {
 				"image": "parts/face/vomiting.svg",
-				"position": "middle"
+				"position": "middle",
+				"overrideFace": true
 			}
 		},
 		{
@@ -61,6 +63,7 @@
 			"unicode": "1f928",
 			"background": {
 				"image": "parts/face/face.svg",
+				"imageWithFace": "emoji/face_with_raised_eyebrow_color.svg",
 				"positions": [
 					{
 						"position": "top",
@@ -78,7 +81,8 @@
 			},
 			"foreground": {
 				"image": "parts/face/raised_eyebrow.svg",
-				"position": "middle"
+				"position": "middle",
+				"overrideFace": true
 			}
 		},
 		{
@@ -101,7 +105,8 @@
 			"unicode": "1f440",
 			"foreground": {
 				"image": "emoji/eyes_color.svg",
-				"position": "top"
+				"position": "top",
+				"overrideFace": true
 			}
 		},
 		{
@@ -123,6 +128,7 @@
 			"unicode": "1f42c",
 			"background": {
 				"image": "parts/dolphin.svg",
+				"imageWithFace": "emoji/dolphin_color.svg",
 				"positions": [
 					{
 						"position": "top",
@@ -134,6 +140,12 @@
 						"position": "middle",
 						"x": 110,
 						"y": 50,
+						"size": 2.3
+					},
+					{
+						"position": "above_face",
+						"x": 130,
+						"y": 10,
 						"size": 2.3
 					}
 				]
@@ -278,6 +290,51 @@
 						"size": 6
 					}
 				]
+			}
+		},
+		{
+			"cldr": "smiling face with halo",
+			"fromVersion": "1.0",
+			"glyph": "😇",
+			"glyphAsUtfInEmoticons": [
+				"angel"
+			],
+			"group": "Smileys & Emotion",
+			"keywords": [
+				"angel",
+				"face",
+				"fantasy",
+				"halo",
+				"innocent",
+				"smiling face with halo"
+			],
+			"mappedToEmoticons": [
+				"angel"
+			],
+			"tts": "smiling face with halo",
+			"unicode": "1f607",
+			"background": {
+				"image": "parts/face/face.svg",
+				"positions": [
+					{
+						"position": "top",
+						"x": 60,
+						"y": 50,
+						"size": 5
+					},
+					{
+						"position": "middle",
+						"x": 0,
+						"y": 0,
+						"size": 8
+					}
+				]
+			},
+			"foreground": {
+				"image": "parts/face/halo.svg",
+				"imageWithFace": "parts/face/halo_with_face.svg",
+				"position": "middle",
+				"overrideFace": false
 			}
 		}
 	]
