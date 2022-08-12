@@ -12,7 +12,8 @@ function App() {
   const [baseEmojis, setBaseEmojis] = useState<EmojiMetadata[]>([]);
   const [selectedOption1, setSelectedOption1] = useState<EmojiMetadata>();
   const [selectedOption2, setSelectedOption2] = useState<EmojiMetadata>();
-  const [disabledOptions , setDisabledOptions] = useState<EmojiMetadata[]>([]);
+  const [disabledOptions, setDisabledOptions] = useState<EmojiMetadata[]>([]);
+  const [imageVer, setImageVer] = useState<number>(0);
 
   function loadEmojiOptions() {
     emojiConfig.baseEmoji.map((emoji, index) => {
@@ -67,7 +68,10 @@ function App() {
 
   useEffect(() => {
     checkForDisabledOptions();
-  }, [selectedOption1]);
+    if (selectedOption1 && selectedOption2) {
+      setImageVer(prevState => prevState + 1);
+    }
+  }, [selectedOption1, selectedOption2]);
 
   return (
     <div className="App">
@@ -95,7 +99,7 @@ function App() {
           </div>
         </div>
       </div>
-      <CombinedImage selectedOption1={selectedOption1} selectedOption2={selectedOption2}/>
+      <CombinedImage selectedOption1={selectedOption1} selectedOption2={selectedOption2} imageVer={imageVer}/>
     </div>
   );
 }

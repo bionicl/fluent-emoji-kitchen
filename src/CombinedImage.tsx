@@ -1,16 +1,22 @@
 import { EmojiMetadata } from "./types/emojiMetadata";
 import mergeImages from "merge-images";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const saveSvgAsPng = require('save-svg-as-png');
 
 type Props = {
 	selectedOption1?: EmojiMetadata;
 	selectedOption2?: EmojiMetadata;
+	imageVer: number;
 }
 
-const CombinedImage = ({ selectedOption1, selectedOption2 }: Props) => {
+const CombinedImage = ({ selectedOption1, selectedOption2, imageVer }: Props) => {
 
 	const [src, setSrc] = useState<string>("");
+	const [loading, setLoading] = useState<boolean>(false);
+
+	useEffect(() => {
+		mergeMultiple();
+	}, [imageVer]);
 
 	function returnSvgFileFromPath(path: string) {
 		console.log(path);
@@ -49,7 +55,7 @@ const CombinedImage = ({ selectedOption1, selectedOption2 }: Props) => {
 
 	async function mergeMultiple() {
 		if (selectedOption1 && selectedOption2) {
-			console.log(selectedOption2.background);
+			setLoading(true);
 			let image1, image2, x, y;
 
 			if ((selectedOption1.background != undefined && selectedOption2.background == undefined) || (selectedOption1.foreground == undefined && selectedOption2.foreground != undefined)) {
@@ -84,16 +90,28 @@ const CombinedImage = ({ selectedOption1, selectedOption2 }: Props) => {
 					y: y,
 				}
 			])
-				.then((src) => setSrc(src))
+				.then((src) => {
+					setSrc(src);
+					setLoading(false);
+				})
 				.catch((err) => console.log(err));
 		}
+	}
+
+	const imageClasses = ["output-image"]
+	if (loading) {
+		imageClasses.push("loading-image");
+	}
+	if (!selectedOption2) {
+		imageClasses.push("not-selected-image");
+		// setPreviouslyNotSelected(true);
 	}
 
 	return (
 		<div style={{marginTop: 70}}>
 			<h1>Combined Image</h1>
-			{src && <img style={{border: "rgb(80, 80, 80) solid 1px"}} width={300} src={src} alt="" />}
-			<button onClick={() => mergeMultiple()}>Merge multiple</button>
+			{src && <img className={imageClasses.join(" ")} width={300} src={src} alt="" />}
+			{/* <button onClick={() => mergeMultiple()}>Merge multiple</button> */}
 		</div>
 	)
 
