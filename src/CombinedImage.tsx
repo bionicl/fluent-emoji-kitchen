@@ -59,19 +59,19 @@ const CombinedImage = ({ selectedOption1, selectedOption2, imageVer }: Props) =>
 			let image1, image2, x, y;
 
 			if ((selectedOption1.background != undefined && selectedOption2.background == undefined) || (selectedOption1.foreground == undefined && selectedOption2.foreground != undefined)) {
-				image1 = await convertSVGToPng("./svgFiles/parts/" + selectedOption1.background!.image + ".svg") as string;
+				image1 = await convertSVGToPng("./svgFiles/" + selectedOption1.background!.image) as string;
 				const position = selectedOption1.background!.positions.find(pos => pos.position == selectedOption2.foreground?.position);
 				const size = position?.size;
 				x = position?.x;
 				y = position?.y;
-				image2 = await convertSVGToPng("./svgFiles/parts/" + selectedOption2.foreground!.image + ".svg", size) as string;
+				image2 = await convertSVGToPng("./svgFiles/" + selectedOption2.foreground!.image, size) as string;
 			} else {
-				image1 = await convertSVGToPng("./svgFiles/parts/" + selectedOption2.background!.image + ".svg") as string;
+				image1 = await convertSVGToPng("./svgFiles/" + selectedOption2.background!.image) as string;
 				const position = selectedOption2.background!.positions.find(pos => pos.position == selectedOption1.foreground?.position);
 				const size = position?.size;
 				x = position?.x;
 				y = position?.y;
-				image2 = await convertSVGToPng("./svgFiles/parts/" + selectedOption1.foreground!.image + ".svg", size) as string;
+				image2 = await convertSVGToPng("./svgFiles/" + selectedOption1.foreground!.image, size) as string;
 			}
 
 			mergeImages([

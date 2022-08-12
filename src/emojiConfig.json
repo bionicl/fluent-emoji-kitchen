@@ -20,7 +20,7 @@
 			"tts": "face vomiting",
 			"unicode": "1f92e",
 			"background": {
-				"image": "face",
+				"image": "parts/face/face.svg",
 				"positions": [
 					{
 						"position": "top",
@@ -37,7 +37,7 @@
 				]
 			},
 			"foreground": {
-				"image": "vomiting",
+				"image": "parts/face/vomiting.svg",
 				"position": "middle"
 			}
 		},
@@ -60,7 +60,7 @@
 			"tts": "face with raised eyebrow",
 			"unicode": "1f928",
 			"background": {
-				"image": "face",
+				"image": "parts/face/face.svg",
 				"positions": [
 					{
 						"position": "top",
@@ -77,7 +77,7 @@
 				]
 			},
 			"foreground": {
-				"image": "raised_eyebrow",
+				"image": "parts/face/raised_eyebrow.svg",
 				"position": "middle"
 			}
 		},
@@ -100,7 +100,7 @@
 			"tts": "eyes",
 			"unicode": "1f440",
 			"foreground": {
-				"image": "eyes",
+				"image": "emoji/eyes_color.svg",
 				"position": "top"
 			}
 		},
@@ -122,7 +122,7 @@
 			"tts": "dolphin",
 			"unicode": "1f42c",
 			"background": {
-				"image": "dolphin",
+				"image": "parts/dolphin.svg",
 				"positions": [
 					{
 						"position": "top",
@@ -157,7 +157,7 @@
 			"tts": "baseball",
 			"unicode": "26be",
 			"background": {
-				"image": "baseball",
+				"image": "emoji/baseball_color.svg",
 				"positions": [
 					{
 						"position": "top",
@@ -192,7 +192,7 @@
 			"tts": "evergreen tree",
 			"unicode": "1f332",
 			"background": {
-				"image": "evergreen_tree",
+				"image": "emoji/evergreen_tree_color.svg",
 				"positions": [
 					{
 						"position": "top",
