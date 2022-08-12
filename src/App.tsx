@@ -79,7 +79,7 @@ function App() {
         <div className="column">
           <h1>Emoji 1</h1>
           <div className='emoji-container'>
-            {baseEmojis.map((emoji, index) => {
+            {baseEmojis.sort((a, b) => a.cldr > b.cldr ? 1 : -1).map((emoji, index) => {
               return <EmojiButton emoji={emoji} selectedOption={selectedOption1} setSelectedOption={setSelectedOption1} key={index} />
             })}
           </div>

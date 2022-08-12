@@ -208,6 +208,77 @@
 					}
 				]
 			}
+		},
+		{
+			"cldr": "file folder",
+			"fromVersion": "0.6",
+			"glyph": "📁",
+			"glyphAsUtfInEmoticons": [
+				"1f4c1_filefolder"
+			],
+			"group": "Objects",
+			"keywords": [
+				"file",
+				"folder"
+			],
+			"mappedToEmoticons": [
+				"1f4c1_filefolder"
+			],
+			"tts": "file folder",
+			"unicode": "1f4c1",
+			"background": {
+				"image": "emoji/file_folder_color.svg",
+				"positions": [
+					{
+						"position": "top",
+						"x": 50,
+						"y": 100,
+						"size": 5
+					},
+					{
+						"position": "middle",
+						"x": 0,
+						"y": 30,
+						"size": 8
+					}
+				]
+			}
+		},
+		{
+			"cldr": "fire",
+			"fromVersion": "0.6",
+			"glyph": "🔥",
+			"glyphAsUtfInEmoticons": [
+				"fire"
+			],
+			"group": "Travel & Places",
+			"keywords": [
+				"fire",
+				"flame",
+				"tool"
+			],
+			"mappedToEmoticons": [
+				"fire"
+			],
+			"tts": "fire",
+			"unicode": "1f525",
+			"background": {
+				"image": "emoji/fire_color.svg",
+				"positions": [
+					{
+						"position": "top",
+						"x": 100,
+						"y": 100,
+						"size": 4
+					},
+					{
+						"position": "middle",
+						"x": 66,
+						"y": 120,
+						"size": 6
+					}
+				]
+			}
 		}
 	]
 }

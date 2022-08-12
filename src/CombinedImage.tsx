@@ -76,13 +76,9 @@ const CombinedImage = ({ selectedOption1, selectedOption2, imageVer }: Props) =>
 
 			mergeImages([
 				{
-
-					src:
-						image1,
+					src: image1,
 					x: 0,
 					y: 0,
-					
-
 				},
 				{
 					src: image2,

@@ -22,7 +22,7 @@ body {
   display: inline-grid;
   column-gap: 16px;
   row-gap: 16px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .emoji-box {
@@ -36,8 +36,8 @@ body {
 
   border-radius: 10px;
   padding: 12px;
-  width: 96px;
-  height: 96px;
+  width: 70px;
+  height: 70px;
   position: relative;
 }
 
@@ -73,7 +73,7 @@ body {
 }
 
 .emoji-box img {
-  width: 60px;
+  width: 50px;
   margin: 0;
   position: absolute;
   top: 50%;
