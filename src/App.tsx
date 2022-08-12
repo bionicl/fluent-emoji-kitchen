@@ -73,7 +73,7 @@ function App() {
     <div className="App">
       <div className="row">
         <div className="column">
-          <h1>Emojis 1</h1>
+          <h1>Emoji 1</h1>
           <div className='emoji-container'>
             {baseEmojis.map((emoji, index) => {
               return <EmojiButton emoji={emoji} selectedOption={selectedOption1} setSelectedOption={setSelectedOption1} key={index} />
@@ -81,7 +81,7 @@ function App() {
           </div>
         </div>
         <div className="column">
-          <h1>Emojis 2</h1>
+          <h1>Emoji 2</h1>
           <div className='emoji-container'>
             {baseEmojis.map((emoji, index) => {
               return <EmojiButton
@@ -95,7 +95,7 @@ function App() {
           </div>
         </div>
       </div>
-      <CombinedImage />
+      <CombinedImage selectedOption1={selectedOption1} selectedOption2={selectedOption2}/>
     </div>
   );
 }
