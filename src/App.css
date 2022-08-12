@@ -2,6 +2,18 @@ body {
   background-color: rgb(233, 233, 233);
 }
 
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .App {
   text-align: center;
 }
@@ -39,6 +51,15 @@ body {
   cursor: pointer;
   transform: translate3d(0px, 1px, 0px);
   box-shadow: rgba(0, 0, 0, 0.04) 0px 19px 43px, rgba(0, 0, 0, 0.09) 0px 4px 11px;
+}
+
+.emoji-box:disabled{
+  pointer-events: none;
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  transform: scale(0.95);
+  opacity: 0.2;
 }
 
 

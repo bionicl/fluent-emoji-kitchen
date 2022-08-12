@@ -1,4 +1,5 @@
 export type EmojiMetadata = {
+	// from Microsoft
 	cldr: string,
 	fromVersion: string,
 	glyph: string,
@@ -8,7 +9,24 @@ export type EmojiMetadata = {
 	mappedToEmoticons: string[],
 	tts: string,
 	unicode: string,
-	url?: string
+
+	// overlay info
+	background?: {
+		image: string,
+		positions: {
+			position: string,
+			x: number,
+			y: number,
+			size: number,
+		}[]
+	},
+	foreground?: {
+		image: string,
+		position: string,
+	}
+
+	// internal
+	url?: string,
 }
 
 export function emojiMetadataToFilename(metadata: EmojiMetadata): string {

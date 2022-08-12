@@ -42,6 +42,46 @@
 			}
 		},
 		{
+			"cldr": "face with raised eyebrow",
+			"fromVersion": "5.0",
+			"glyph": "🤨",
+			"glyphAsUtfInEmoticons": [
+				"wonder"
+			],
+			"group": "Smileys & Emotion",
+			"keywords": [
+				"distrust",
+				"face with raised eyebrow",
+				"skeptic"
+			],
+			"mappedToEmoticons": [
+				"wonder"
+			],
+			"tts": "face with raised eyebrow",
+			"unicode": "1f928",
+			"background": {
+				"image": "face",
+				"positions": [
+					{
+						"position": "top",
+						"x": 100,
+						"y": 100,
+						"size": 2
+					},
+					{
+						"position": "middle",
+						"x": 100,
+						"y": 150,
+						"size": 2
+					}
+				]
+			},
+			"foreground": {
+				"image": "raised_eyebrow",
+				"position": "middle"
+			}
+		},
+		{
 			"cldr": "eyes",
 			"fromVersion": "0.6",
 			"glyph": "👀",
@@ -167,46 +207,6 @@
 						"size": 2
 					}
 				]
-			}
-		},
-		{
-			"cldr": "face with raised eyebrow",
-			"fromVersion": "5.0",
-			"glyph": "🤨",
-			"glyphAsUtfInEmoticons": [
-				"wonder"
-			],
-			"group": "Smileys & Emotion",
-			"keywords": [
-				"distrust",
-				"face with raised eyebrow",
-				"skeptic"
-			],
-			"mappedToEmoticons": [
-				"wonder"
-			],
-			"tts": "face with raised eyebrow",
-			"unicode": "1f928",
-			"background": {
-				"image": "face",
-				"positions": [
-					{
-						"position": "top",
-						"x": 100,
-						"y": 100,
-						"size": 2
-					},
-					{
-						"position": "middle",
-						"x": 100,
-						"y": 150,
-						"size": 2
-					}
-				]
-			},
-			"foreground": {
-				"image": "raised_eyebrow",
-				"position": "middle"
 			}
 		}
 	]
