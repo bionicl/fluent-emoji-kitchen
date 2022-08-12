@@ -48,14 +48,13 @@ const CombinedImage = ({ selectedOption1, selectedOption2 }: Props) => {
 	}
 
 	async function mergeMultiple() {
-		console.log(selectedOption1);
 		if (selectedOption1 && selectedOption2) {
-			console.log("merging...");
+			console.log(selectedOption2.background);
 			let image1, image2, x, y;
 
-			if (selectedOption1.background != undefined) {
-				image1 = await convertSVGToPng("./svgFiles/parts/" + selectedOption1.background.image + ".svg") as string;
-				const position = selectedOption1.background.positions.find(pos => pos.position == selectedOption2.foreground?.position);
+			if ((selectedOption1.background != undefined && selectedOption2.background == undefined) || (selectedOption1.foreground == undefined && selectedOption2.foreground != undefined)) {
+				image1 = await convertSVGToPng("./svgFiles/parts/" + selectedOption1.background!.image + ".svg") as string;
+				const position = selectedOption1.background!.positions.find(pos => pos.position == selectedOption2.foreground?.position);
 				const size = position?.size;
 				x = position?.x;
 				y = position?.y;
@@ -76,6 +75,7 @@ const CombinedImage = ({ selectedOption1, selectedOption2 }: Props) => {
 						image1,
 					x: 0,
 					y: 0,
+					
 
 				},
 				{
@@ -92,7 +92,7 @@ const CombinedImage = ({ selectedOption1, selectedOption2 }: Props) => {
 	return (
 		<div style={{marginTop: 70}}>
 			<h1>Combined Image</h1>
-			{src && <img width={300} src={src} alt="" />}
+			{src && <img style={{border: "rgb(80, 80, 80) solid 1px"}} width={300} src={src} alt="" />}
 			<button onClick={() => mergeMultiple()}>Merge multiple</button>
 		</div>
 	)
