@@ -34,6 +34,12 @@
 						"x": 0,
 						"y": 0,
 						"size": 8
+					},
+					{
+						"position": "top_right",
+						"x": 300,
+						"y": 0,
+						"size": 2.6
 					}
 				]
 			},
@@ -76,6 +82,12 @@
 						"x": 0,
 						"y": 0,
 						"size": 8
+					},
+					{
+						"position": "top_right",
+						"x": 300,
+						"y": 0,
+						"size": 2.6
 					}
 				]
 			},
@@ -147,6 +159,12 @@
 						"x": 130,
 						"y": 10,
 						"size": 2.3
+					},
+					{
+						"position": "top_right",
+						"x": 400,
+						"y": 0,
+						"size": 1
 					}
 				]
 			}
@@ -182,6 +200,12 @@
 						"x": 0,
 						"y": 0,
 						"size": 8
+					},
+					{
+						"position": "top_right",
+						"x": 300,
+						"y": 0,
+						"size": 2.6
 					}
 				]
 			}
@@ -217,6 +241,12 @@
 						"x": 127,
 						"y": 160,
 						"size": 4
+					},
+					{
+						"position": "top_right",
+						"x": 240,
+						"y": 90,
+						"size": 2.6
 					}
 				]
 			}
@@ -252,6 +282,12 @@
 						"x": 0,
 						"y": 30,
 						"size": 8
+					},
+					{
+						"position": "top_right",
+						"x": 330,
+						"y": 90,
+						"size": 2.6
 					}
 				]
 			}
@@ -288,6 +324,12 @@
 						"x": 66,
 						"y": 120,
 						"size": 6
+					},
+					{
+						"position": "top_right",
+						"x": 300,
+						"y": 70,
+						"size": 2.6
 					}
 				]
 			}
@@ -327,6 +369,12 @@
 						"x": 0,
 						"y": 0,
 						"size": 8
+					},
+					{
+						"position": "top_right",
+						"x": 300,
+						"y": 0,
+						"size": 2.6
 					}
 				]
 			},
@@ -369,8 +417,65 @@
 						"y": 50,
 						"size": 2.7,
 						"rotation": -45
+					},
+					{
+						"position": "top_right",
+						"x": 140,
+						"y": 0,
+						"size": 2.6
 					}
 				]
+			}
+		},
+		{
+			"cldr": "sunglasses",
+			"fromVersion": "0.7",
+			"glyph": "🕶️",
+			"glyphAsUtfInEmoticons": [
+				"1f576_sunglasses"
+			],
+			"group": "Objects",
+			"keywords": [
+				"dark",
+				"eye",
+				"eyewear",
+				"glasses",
+				"sunglasses"
+			],
+			"mappedToEmoticons": [
+				"1f576_sunglasses"
+			],
+			"tts": "sunglasses",
+			"unicode": "1f576 fe0f",
+			"foreground": {
+				"image": "emoji/sunglasses_color.svg",
+				"position": "top",
+				"overrideFace": true
+			}
+		},
+		{
+			"cldr": "sweat droplets",
+			"fromVersion": "0.6",
+			"glyph": "💦",
+			"glyphAsUtfInEmoticons": [
+				"1f4a6_splashingsweatsymbol"
+			],
+			"group": "Smileys & Emotion",
+			"keywords": [
+				"comic",
+				"splashing",
+				"sweat",
+				"sweat droplets"
+			],
+			"mappedToEmoticons": [
+				"1f4a6_splashingsweatsymbol"
+			],
+			"tts": "sweat droplets",
+			"unicode": "1f4a6",
+			"foreground": {
+				"image": "emoji/sweat_droplets_color.svg",
+				"position": "top_right",
+				"overrideFace": false
 			}
 		}
 	]

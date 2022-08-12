@@ -1,5 +1,6 @@
 {
   "name": "fluent-emoji-kitchen",
+  "homepage": "http://fluentemojikitchen.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
