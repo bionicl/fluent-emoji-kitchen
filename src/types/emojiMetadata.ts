@@ -12,5 +12,5 @@ export type EmojiMetadata = {
 }
 
 export function emojiMetadataToFilename(metadata: EmojiMetadata): string {
-	return `${metadata.tts.replace(" ", "_")}_color.svg`
+	return `${metadata.tts.replaceAll(" ", "_")}_color.svg`
 }

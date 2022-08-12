@@ -54,7 +54,6 @@ body {
 
 .emoji-box img {
   width: 60px;
-  user-select: none;
   margin: 0;
   position: absolute;
   top: 50%;

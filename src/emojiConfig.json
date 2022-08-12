@@ -18,7 +18,28 @@
 				"puke"
 			],
 			"tts": "face vomiting",
-			"unicode": "1f92e"
+			"unicode": "1f92e",
+			"background": {
+				"image": "face",
+				"positions": [
+					{
+						"position": "top",
+						"x": 100,
+						"y": 100,
+						"size": 2
+					},
+					{
+						"position": "middle",
+						"x": 100,
+						"y": 150,
+						"size": 2
+					}
+				]
+			},
+			"foreground": {
+				"image": "vomiting",
+				"position": "middle"
+			}
 		},
 		{
 			"cldr": "eyes",
@@ -37,7 +58,11 @@
 				"1f440_eyes"
 			],
 			"tts": "eyes",
-			"unicode": "1f440"
+			"unicode": "1f440",
+			"foreground": {
+				"image": "eyes",
+				"position": "top"
+			}
 		},
 		{
 			"cldr": "dolphin",
@@ -55,7 +80,134 @@
 				"dolphin"
 			],
 			"tts": "dolphin",
-			"unicode": "1f42c"
+			"unicode": "1f42c",
+			"background": {
+				"image": "dolphin",
+				"positions": [
+					{
+						"position": "top",
+						"x": 100,
+						"y": 100,
+						"size": 2
+					},
+					{
+						"position": "middle",
+						"x": 100,
+						"y": 150,
+						"size": 2
+					}
+				]
+			}
+		},
+		{
+			"cldr": "baseball",
+			"fromVersion": "0.6",
+			"glyph": "⚾",
+			"glyphAsUtfInEmoticons": [
+				"baseball"
+			],
+			"group": "Activities",
+			"keywords": [
+				"ball",
+				"baseball"
+			],
+			"mappedToEmoticons": [
+				"baseball"
+			],
+			"tts": "baseball",
+			"unicode": "26be",
+			"background": {
+				"image": "baseball",
+				"positions": [
+					{
+						"position": "top",
+						"x": 100,
+						"y": 100,
+						"size": 2
+					},
+					{
+						"position": "middle",
+						"x": 100,
+						"y": 150,
+						"size": 2
+					}
+				]
+			}
+		},
+		{
+			"cldr": "evergreen tree",
+			"fromVersion": "1.0",
+			"glyph": "🌲",
+			"glyphAsUtfInEmoticons": [
+				"evergreentree"
+			],
+			"group": "Animals & Nature",
+			"keywords": [
+				"evergreen tree",
+				"tree"
+			],
+			"mappedToEmoticons": [
+				"evergreentree"
+			],
+			"tts": "evergreen tree",
+			"unicode": "1f332",
+			"background": {
+				"image": "baseball",
+				"positions": [
+					{
+						"position": "top",
+						"x": 100,
+						"y": 100,
+						"size": 2
+					},
+					{
+						"position": "middle",
+						"x": 100,
+						"y": 150,
+						"size": 2
+					}
+				]
+			}
+		},
+		{
+			"cldr": "face with raised eyebrow",
+			"fromVersion": "5.0",
+			"glyph": "🤨",
+			"glyphAsUtfInEmoticons": [
+				"wonder"
+			],
+			"group": "Smileys & Emotion",
+			"keywords": [
+				"distrust",
+				"face with raised eyebrow",
+				"skeptic"
+			],
+			"mappedToEmoticons": [
+				"wonder"
+			],
+			"tts": "face with raised eyebrow",
+			"unicode": "1f928",
+			"background": {
+				"image": "face",
+				"positions": [
+					{
+						"position": "top",
+						"x": 100,
+						"y": 100,
+						"size": 2
+					},
+					{
+						"position": "middle",
+						"x": 100,
+						"y": 150,
+						"size": 2
+					}
+				]
+			},
+			"foreground": {
+				"image": "raised_eyebrow",
+				"position": "middle"
+			}
 		}
 	]
 }
