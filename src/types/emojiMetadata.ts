@@ -16,6 +16,7 @@ export type EmojiMetadata = {
 		imageWithFace?: string,
 		positions: {
 			position: string,
+			rotation?: number,
 			x: number,
 			y: number,
 			size: number,

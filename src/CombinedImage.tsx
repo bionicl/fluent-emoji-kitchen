@@ -34,18 +34,19 @@ const CombinedImage = ({ selectedOption1, selectedOption2, imageVer }: Props) =>
 		});
 	}
 
-	async function convertSVGToPng(path: string, scale: number = 8) {
+	async function convertSVGToPng(path: string, scale: number = 8, rotation = 0) {
 
 		const imageOptions = {
 			encoderOptions: 1,
-			scale: scale
+			scale: scale,
 		};
 
 		return new Promise(async (resolve, reject) => {
 			const svgFile: string = await returnSvgFileFromPath(path) as string;
 			var parser = new DOMParser();
 			var doc = parser.parseFromString(svgFile, "image/svg+xml");
-			const svg: SVGElement = doc.querySelector('svg') as SVGElement;
+			let svg: SVGElement = doc.querySelector('svg') as SVGElement;
+			svg.style.transform = "rotate(" + rotation + "deg)";
 
 			saveSvgAsPng.svgAsPngUri(svg, imageOptions).then((uri: any) => {
 				resolve(uri);
@@ -84,9 +85,10 @@ const CombinedImage = ({ selectedOption1, selectedOption2, imageVer }: Props) =>
 			const size = position?.size;
 			const x = position?.x;
 			const y = position?.y;
+			const rotation = position?.rotation ? position.rotation : 0;
 
 			const image1 = await convertSVGToPng("./svgFiles/" + backgroundImage) as string;
-			const image2 = await convertSVGToPng("./svgFiles/" + foregroundImage, size) as string;
+			const image2 = await convertSVGToPng("./svgFiles/" + foregroundImage, size, rotation) as string;
 
 			mergeImages([
 				{
