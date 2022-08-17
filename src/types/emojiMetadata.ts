@@ -14,13 +14,7 @@ export type EmojiMetadata = {
 	background?: {
 		image: string,
 		imageWithFace?: string,
-		positions: {
-			position: string,
-			rotation?: number,
-			x: number,
-			y: number,
-			size: number,
-		}[]
+		positions: EmojiPosition[][]
 	},
 	foreground?: {
 		image: string,
@@ -31,6 +25,14 @@ export type EmojiMetadata = {
 
 	// internal
 	url?: string,
+}
+
+export type EmojiPosition = {
+	position: string,
+	rotation?: number,
+	x: number,
+	y: number,
+	size: number,
 }
 
 export function emojiMetadataToFilename(metadata: EmojiMetadata): string {

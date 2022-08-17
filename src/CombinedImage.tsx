@@ -1,4 +1,4 @@
-import { EmojiMetadata } from "./types/emojiMetadata";
+import { EmojiMetadata, EmojiPosition } from "./types/emojiMetadata";
 import mergeImages from "merge-images";
 import { useEffect, useState } from "react";
 const saveSvgAsPng = require('save-svg-as-png');
@@ -19,7 +19,6 @@ const CombinedImage = ({ selectedOption1, selectedOption2, imageVer }: Props) =>
 	}, [imageVer]);
 
 	function returnSvgFileFromPath(path: string) {
-		console.log(path);
 		return new Promise((resolve, reject) => {
 			import(`${path}`).then(obj => {
 				fetch(obj.default)
@@ -77,31 +76,44 @@ const CombinedImage = ({ selectedOption1, selectedOption2, imageVer }: Props) =>
 				}
 			}
 			// get coordinates, size
-			let position = option1.background!.positions.find(pos => pos.position == option2.foreground?.position);
-			if (option2.foreground!.overrideFace == false) {
-				const searchResult = option1.background!.positions.find(pos => pos.position == "above_face");
-				position = searchResult ? searchResult : position;
-			}
-			const size = position?.size;
-			const x = position?.x;
-			const y = position?.y;
-			const rotation = position?.rotation ? position.rotation : 0;
+
+			let positions : EmojiPosition[] & {imageString? : string}[] = [];
+			let foregroundPosition = option2.foreground?.position;
+			option1.background!.positions.forEach(async (e) => {
+				let position: EmojiPosition & { imageString?: string; } | undefined = e.find(pos => pos.position == foregroundPosition);
+				// if (option2.foreground!.overrideFace == false) {
+				// 	const searchResult = option1.background!.positions.find(pos => pos.position == "above_face");
+				// 	position = searchResult ? searchResult : position;
+				// }
+				if (position) {
+					const size = position?.size;
+					const rotation = position?.rotation ? position.rotation : 0;
+
+					const image = await convertSVGToPng("./screenes/svgFiles/" + foregroundImage, size, rotation) as string;
+					position.imageString = image;
+					console.log("Added position!");
+					positions.push(position);
+				}
+			})
+			
+			
 
 			const image1 = await convertSVGToPng("./screenes/svgFiles/" + backgroundImage) as string;
-			const image2 = await convertSVGToPng("./screenes/svgFiles/" + foregroundImage, size, rotation) as string;
+			let sources : mergeImages.ImageSource[] = [{
+				src: image1,
+				x: 0,
+				y: 0,
+			}];
+			positions.forEach((position : EmojiPosition & {imageString? : string}) => {
+				sources.push({
+					src: position.imageString!,
+					x: position.x,
+					y: position.y
+				})
+			})
 
-			mergeImages([
-				{
-					src: image1,
-					x: 0,
-					y: 0,
-				},
-				{
-					src: image2,
-					x: x,
-					y: y,
-				}
-			])
+			console.log(sources);
+			mergeImages(sources)
 				.then((src) => {
 					setSrc(src);
 					setLoading(false);

@@ -22,7 +22,7 @@
 			"background": {
 				"image": "parts/face/face.svg",
 				"imageWithFace": "emoji/face_vomiting_color.svg",
-				"positions": [
+				"positions": [[
 					{
 						"position": "top",
 						"x": 60,
@@ -41,7 +41,7 @@
 						"y": 0,
 						"size": 2.6
 					}
-				]
+				]]
 			},
 			"foreground": {
 				"image": "parts/face/vomiting.svg",
@@ -70,7 +70,7 @@
 			"background": {
 				"image": "parts/face/face.svg",
 				"imageWithFace": "emoji/face_with_raised_eyebrow_color.svg",
-				"positions": [
+				"positions": [[
 					{
 						"position": "top",
 						"x": 60,
@@ -89,7 +89,7 @@
 						"y": 0,
 						"size": 2.6
 					}
-				]
+				]]
 			},
 			"foreground": {
 				"image": "parts/face/raised_eyebrow.svg",
@@ -141,7 +141,7 @@
 			"background": {
 				"image": "parts/dolphin.svg",
 				"imageWithFace": "emoji/dolphin_color.svg",
-				"positions": [
+				"positions": [[
 					{
 						"position": "top",
 						"x": 120,
@@ -166,7 +166,7 @@
 						"y": 0,
 						"size": 1
 					}
-				]
+				]]
 			}
 		},
 		{
@@ -188,7 +188,7 @@
 			"unicode": "26be",
 			"background": {
 				"image": "emoji/baseball_color.svg",
-				"positions": [
+				"positions": [[
 					{
 						"position": "top",
 						"x": 60,
@@ -207,7 +207,7 @@
 						"y": 0,
 						"size": 2.6
 					}
-				]
+				]]
 			}
 		},
 		{
@@ -229,7 +229,7 @@
 			"unicode": "1f332",
 			"background": {
 				"image": "emoji/evergreen_tree_color.svg",
-				"positions": [
+				"positions": [[
 					{
 						"position": "top",
 						"x": 100,
@@ -248,7 +248,7 @@
 						"y": 90,
 						"size": 2.6
 					}
-				]
+				]]
 			}
 		},
 		{
@@ -270,7 +270,7 @@
 			"unicode": "1f4c1",
 			"background": {
 				"image": "emoji/file_folder_color.svg",
-				"positions": [
+				"positions": [[
 					{
 						"position": "top",
 						"x": 50,
@@ -289,7 +289,7 @@
 						"y": 90,
 						"size": 2.6
 					}
-				]
+				]]
 			}
 		},
 		{
@@ -312,7 +312,7 @@
 			"unicode": "1f525",
 			"background": {
 				"image": "emoji/fire_color.svg",
-				"positions": [
+				"positions": [[
 					{
 						"position": "top",
 						"x": 100,
@@ -331,7 +331,7 @@
 						"y": 70,
 						"size": 2.6
 					}
-				]
+				]]
 			}
 		},
 		{
@@ -357,7 +357,7 @@
 			"unicode": "1f607",
 			"background": {
 				"image": "parts/face/face.svg",
-				"positions": [
+				"positions": [[
 					{
 						"position": "top",
 						"x": 60,
@@ -376,7 +376,7 @@
 						"y": 0,
 						"size": 2.6
 					}
-				]
+				]]
 			},
 			"foreground": {
 				"image": "parts/face/halo.svg",
@@ -404,7 +404,7 @@
 			"unicode": "1f944",
 			"background": {
 				"image": "emoji/spoon_color.svg",
-				"positions": [
+				"positions": [[
 					{
 						"position": "top",
 						"x": 40,
@@ -424,7 +424,7 @@
 						"y": 0,
 						"size": 2.6
 					}
-				]
+				]]
 			}
 		},
 		{
@@ -476,6 +476,69 @@
 				"image": "emoji/sweat_droplets_color.svg",
 				"position": "top_right",
 				"overrideFace": false
+			}
+		},
+		{
+			"cldr": "cherries",
+			"fromVersion": "0.6",
+			"glyph": "🍒",
+			"glyphAsUtfInEmoticons": [
+			  "cherries"
+			],
+			"group": "Food & Drink",
+			"keywords": [
+			  "berries",
+			  "cherries",
+			  "cherry",
+			  "fruit",
+			  "red"
+			],
+			"mappedToEmoticons": [
+			  "cherries"
+			],
+			"tts": "cherries",
+			"unicode": "1f352",
+			"background": {
+				"image": "emoji/cherries_color.svg",
+				"positions": [[
+					{
+						"position": "top",
+						"x": 60,
+						"y": 50,
+						"size": 5
+					},
+					{
+						"position": "middle",
+						"x": 40,
+						"y": 280,
+						"size": 3
+					},
+					{
+						"position": "top_right",
+						"x": 300,
+						"y": 0,
+						"size": 2.6
+					}
+				],[
+					{
+						"position": "top",
+						"x": 60,
+						"y": 50,
+						"size": 5
+					},
+					{
+						"position": "middle",
+						"x": 280,
+						"y": 280,
+						"size": 3
+					},
+					{
+						"position": "top_right",
+						"x": 300,
+						"y": 0,
+						"size": 2.6
+					}
+				]]
 			}
 		}
 	]
