@@ -87,8 +87,8 @@ const CombinedImage = ({ selectedOption1, selectedOption2, imageVer }: Props) =>
 			const y = position?.y;
 			const rotation = position?.rotation ? position.rotation : 0;
 
-			const image1 = await convertSVGToPng("./svgFiles/" + backgroundImage) as string;
-			const image2 = await convertSVGToPng("./svgFiles/" + foregroundImage, size, rotation) as string;
+			const image1 = await convertSVGToPng("./screenes/svgFiles/" + backgroundImage) as string;
+			const image2 = await convertSVGToPng("./screenes/svgFiles/" + foregroundImage, size, rotation) as string;
 
 			mergeImages([
 				{
