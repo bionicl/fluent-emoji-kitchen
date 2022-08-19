@@ -22,26 +22,28 @@
 			"background": {
 				"image": "parts/face/face.svg",
 				"imageWithFace": "emoji/face_vomiting_color.svg",
-				"positions": [[
-					{
-						"position": "top",
-						"x": 60,
-						"y": 50,
-						"size": 5
-					},
-					{
-						"position": "middle",
-						"x": 0,
-						"y": 0,
-						"size": 8
-					},
-					{
-						"position": "top_right",
-						"x": 300,
-						"y": 0,
-						"size": 2.6
-					}
-				]]
+				"positions": [
+					[
+						{
+							"position": "top",
+							"x": 90,
+							"y": 60,
+							"size": 5
+						},
+						{
+							"position": "middle",
+							"x": 0,
+							"y": 0,
+							"size": 8
+						},
+						{
+							"position": "top_right",
+							"x": 300,
+							"y": 0,
+							"size": 2.6
+						}
+					]
+				]
 			},
 			"foreground": {
 				"image": "parts/face/vomiting.svg",
@@ -70,26 +72,28 @@
 			"background": {
 				"image": "parts/face/face.svg",
 				"imageWithFace": "emoji/face_with_raised_eyebrow_color.svg",
-				"positions": [[
-					{
-						"position": "top",
-						"x": 60,
-						"y": 50,
-						"size": 5
-					},
-					{
-						"position": "middle",
-						"x": 0,
-						"y": 0,
-						"size": 8
-					},
-					{
-						"position": "top_right",
-						"x": 300,
-						"y": 0,
-						"size": 2.6
-					}
-				]]
+				"positions": [
+					[
+						{
+							"position": "top",
+							"x": 90,
+							"y": 60,
+							"size": 5
+						},
+						{
+							"position": "middle",
+							"x": 0,
+							"y": 0,
+							"size": 8
+						},
+						{
+							"position": "top_right",
+							"x": 300,
+							"y": 0,
+							"size": 2.6
+						}
+					]
+				]
 			},
 			"foreground": {
 				"image": "parts/face/raised_eyebrow.svg",
@@ -141,32 +145,34 @@
 			"background": {
 				"image": "parts/dolphin.svg",
 				"imageWithFace": "emoji/dolphin_color.svg",
-				"positions": [[
-					{
-						"position": "top",
-						"x": 120,
-						"y": 30,
-						"size": 2
-					},
-					{
-						"position": "middle",
-						"x": 110,
-						"y": 50,
-						"size": 2.3
-					},
-					{
-						"position": "above_face",
-						"x": 130,
-						"y": 10,
-						"size": 2.3
-					},
-					{
-						"position": "top_right",
-						"x": 400,
-						"y": 0,
-						"size": 1
-					}
-				]]
+				"positions": [
+					[
+						{
+							"position": "top",
+							"x": 110,
+							"y": 30,
+							"size": 2
+						},
+						{
+							"position": "middle",
+							"x": 110,
+							"y": 50,
+							"size": 2.3
+						},
+						{
+							"position": "above_face",
+							"x": 130,
+							"y": 10,
+							"size": 2.3
+						},
+						{
+							"position": "top_right",
+							"x": 260,
+							"y": 0,
+							"size": 2
+						}
+					]
+				]
 			}
 		},
 		{
@@ -188,26 +194,28 @@
 			"unicode": "26be",
 			"background": {
 				"image": "emoji/baseball_color.svg",
-				"positions": [[
-					{
-						"position": "top",
-						"x": 60,
-						"y": 50,
-						"size": 5
-					},
-					{
-						"position": "middle",
-						"x": 0,
-						"y": 0,
-						"size": 8
-					},
-					{
-						"position": "top_right",
-						"x": 300,
-						"y": 0,
-						"size": 2.6
-					}
-				]]
+				"positions": [
+					[
+						{
+							"position": "top",
+							"x": 60,
+							"y": 50,
+							"size": 5
+						},
+						{
+							"position": "middle",
+							"x": 0,
+							"y": 0,
+							"size": 8
+						},
+						{
+							"position": "top_right",
+							"x": 300,
+							"y": 0,
+							"size": 2.6
+						}
+					]
+				]
 			}
 		},
 		{
@@ -229,26 +237,28 @@
 			"unicode": "1f332",
 			"background": {
 				"image": "emoji/evergreen_tree_color.svg",
-				"positions": [[
-					{
-						"position": "top",
-						"x": 100,
-						"y": 100,
-						"size": 4
-					},
-					{
-						"position": "middle",
-						"x": 127,
-						"y": 160,
-						"size": 4
-					},
-					{
-						"position": "top_right",
-						"x": 240,
-						"y": 90,
-						"size": 2.6
-					}
-				]]
+				"positions": [
+					[
+						{
+							"position": "top",
+							"x": 100,
+							"y": 100,
+							"size": 4
+						},
+						{
+							"position": "middle",
+							"x": 127,
+							"y": 160,
+							"size": 4
+						},
+						{
+							"position": "top_right",
+							"x": 240,
+							"y": 90,
+							"size": 2.6
+						}
+					]
+				]
 			}
 		},
 		{
@@ -270,26 +280,28 @@
 			"unicode": "1f4c1",
 			"background": {
 				"image": "emoji/file_folder_color.svg",
-				"positions": [[
-					{
-						"position": "top",
-						"x": 50,
-						"y": 100,
-						"size": 5
-					},
-					{
-						"position": "middle",
-						"x": 0,
-						"y": 30,
-						"size": 8
-					},
-					{
-						"position": "top_right",
-						"x": 330,
-						"y": 90,
-						"size": 2.6
-					}
-				]]
+				"positions": [
+					[
+						{
+							"position": "top",
+							"x": 50,
+							"y": 100,
+							"size": 5
+						},
+						{
+							"position": "middle",
+							"x": 0,
+							"y": 30,
+							"size": 8
+						},
+						{
+							"position": "top_right",
+							"x": 330,
+							"y": 90,
+							"size": 2.6
+						}
+					]
+				]
 			}
 		},
 		{
@@ -312,26 +324,28 @@
 			"unicode": "1f525",
 			"background": {
 				"image": "emoji/fire_color.svg",
-				"positions": [[
-					{
-						"position": "top",
-						"x": 100,
-						"y": 100,
-						"size": 4
-					},
-					{
-						"position": "middle",
-						"x": 66,
-						"y": 120,
-						"size": 6
-					},
-					{
-						"position": "top_right",
-						"x": 300,
-						"y": 70,
-						"size": 2.6
-					}
-				]]
+				"positions": [
+					[
+						{
+							"position": "top",
+							"x": 100,
+							"y": 100,
+							"size": 4
+						},
+						{
+							"position": "middle",
+							"x": 66,
+							"y": 120,
+							"size": 6
+						},
+						{
+							"position": "top_right",
+							"x": 300,
+							"y": 70,
+							"size": 2.6
+						}
+					]
+				]
 			}
 		},
 		{
@@ -357,26 +371,28 @@
 			"unicode": "1f607",
 			"background": {
 				"image": "parts/face/face.svg",
-				"positions": [[
-					{
-						"position": "top",
-						"x": 60,
-						"y": 50,
-						"size": 5
-					},
-					{
-						"position": "middle",
-						"x": 0,
-						"y": 0,
-						"size": 8
-					},
-					{
-						"position": "top_right",
-						"x": 300,
-						"y": 0,
-						"size": 2.6
-					}
-				]]
+				"positions": [
+					[
+						{
+							"position": "top",
+							"x": 60,
+							"y": 50,
+							"size": 5
+						},
+						{
+							"position": "middle",
+							"x": 0,
+							"y": 0,
+							"size": 8
+						},
+						{
+							"position": "top_right",
+							"x": 300,
+							"y": 0,
+							"size": 2.6
+						}
+					]
+				]
 			},
 			"foreground": {
 				"image": "parts/face/halo.svg",
@@ -404,27 +420,29 @@
 			"unicode": "1f944",
 			"background": {
 				"image": "emoji/spoon_color.svg",
-				"positions": [[
-					{
-						"position": "top",
-						"x": 40,
-						"y": 30,
-						"size": 2.5
-					},
-					{
-						"position": "middle",
-						"x": 50,
-						"y": 50,
-						"size": 2.7,
-						"rotation": -45
-					},
-					{
-						"position": "top_right",
-						"x": 140,
-						"y": 0,
-						"size": 2.6
-					}
-				]]
+				"positions": [
+					[
+						{
+							"position": "top",
+							"x": 40,
+							"y": 30,
+							"size": 2.5
+						},
+						{
+							"position": "middle",
+							"x": 50,
+							"y": 50,
+							"size": 2.7,
+							"rotation": -45
+						},
+						{
+							"position": "top_right",
+							"x": 140,
+							"y": 0,
+							"size": 2.6
+						}
+					]
+				]
 			}
 		},
 		{
@@ -450,7 +468,7 @@
 			"foreground": {
 				"image": "emoji/sunglasses_color.svg",
 				"position": "top",
-				"overrideFace": true
+				"overrideFace": false
 			}
 		},
 		{
@@ -483,62 +501,109 @@
 			"fromVersion": "0.6",
 			"glyph": "🍒",
 			"glyphAsUtfInEmoticons": [
-			  "cherries"
+				"cherries"
 			],
 			"group": "Food & Drink",
 			"keywords": [
-			  "berries",
-			  "cherries",
-			  "cherry",
-			  "fruit",
-			  "red"
+				"berries",
+				"cherries",
+				"cherry",
+				"fruit",
+				"red"
 			],
 			"mappedToEmoticons": [
-			  "cherries"
+				"cherries"
 			],
 			"tts": "cherries",
 			"unicode": "1f352",
 			"background": {
 				"image": "emoji/cherries_color.svg",
-				"positions": [[
-					{
-						"position": "top",
-						"x": 60,
-						"y": 50,
-						"size": 5
-					},
-					{
-						"position": "middle",
-						"x": 40,
-						"y": 280,
-						"size": 3
-					},
-					{
-						"position": "top_right",
-						"x": 300,
-						"y": 0,
-						"size": 2.6
-					}
-				],[
-					{
-						"position": "top",
-						"x": 60,
-						"y": 50,
-						"size": 5
-					},
-					{
-						"position": "middle",
-						"x": 280,
-						"y": 280,
-						"size": 3
-					},
-					{
-						"position": "top_right",
-						"x": 300,
-						"y": 0,
-						"size": 2.6
-					}
-				]]
+				"positions": [
+					[
+						{
+							"position": "top",
+							"x": 20,
+							"y": 250,
+							"size": 3
+						},
+						{
+							"position": "middle",
+							"x": 40,
+							"y": 280,
+							"size": 3
+						},
+						{
+							"position": "top_right",
+							"x": 300,
+							"y": 0,
+							"size": 2.6
+						}
+					],
+					[
+						{
+							"position": "top",
+							"x": 260,
+							"y": 250,
+							"size": 3
+						},
+						{
+							"position": "middle",
+							"x": 280,
+							"y": 280,
+							"size": 3
+						},
+						{
+							"position": "top_right",
+							"x": 300,
+							"y": 0,
+							"size": 2.6
+						}
+					]
+				]
+			}
+		},
+		{
+			"cldr": "fox",
+			"fromVersion": "3.0",
+			"glyph": "🦊",
+			"glyphAsUtfInEmoticons": [
+				"foxhug"
+			],
+			"group": "Animals & Nature",
+			"keywords": [
+				"face",
+				"fox"
+			],
+			"mappedToEmoticons": [
+				"foxhug"
+			],
+			"tts": "fox",
+			"unicode": "1f98a",
+			"background": {
+				"image": "parts/fox.svg",
+				"imageWithFace": "emoji/fox_color.svg",
+				"positions": [
+					[
+						{
+							"position": "top",
+							"x": 120,
+							"y": 160,
+							"size": 4
+						},
+						{
+							"position": "middle",
+							"x": 62,
+							"y": 130,
+							"size": 6
+						},
+						{
+							"position": "top_right",
+							"x": 280,
+							"y": 90,
+							"size": 2.6
+						}
+					]
+				]
 			}
 		}
 	]
