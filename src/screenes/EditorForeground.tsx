@@ -1,6 +1,7 @@
 import { Button, Card, Checkbox, Input, Space, Typography } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EmojiMetadata } from "../types/emojiMetadata";
+import EditorForegroundS1 from "./EditorForegroundS1";
 
 const { TextArea } = Input;
 const { Text, Title } = Typography;
@@ -11,8 +12,17 @@ type Props = {
 }
 
 function EditorForeground({json, setJson} : Props) {
+
+    const [stages, setStages] = useState<JSX.Element[]>([]);
+	const [currentStage, setCurrentStage] = useState(0);
+
+    useEffect(() => {
+		setStages([<EditorForegroundS1 json={json} setJson={setJson}/>]);
+		setCurrentStage(0);
+	}, []);
+
     return (
-        <Text>foreground editor</Text>
+        stages[currentStage]
     )
 }
 

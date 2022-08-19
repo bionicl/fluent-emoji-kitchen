@@ -1,6 +1,5 @@
 import { Button, Card, Checkbox, Col, Divider, Input, Radio, Row, Space, Typography } from "antd";
 import { useEffect, useState } from "react";
-import { start } from "repl";
 import EditorBackground from "./EditorBackground";
 import EditorForeground from "./EditorForeground";
 import EditorStart from "./EditorStart";
@@ -12,7 +11,7 @@ function Editor() {
 	const [json, setJson] = useState({});
 
 	useEffect(() => {
-		setStages([<EditorStart setJson={setJson} setupAfterStart={setupAfterStart}/>]);
+		setStages([<EditorStart setJson={setJson} setupAfterStart={setupAfterStart} />]);
 		setCurrentStage(0);
 	}, []);
 
@@ -20,7 +19,7 @@ function Editor() {
 		setCurrentStage(currentStage + 1);
 	}
 
-	function setupAfterStart(background : boolean, foreground : boolean) {
+	function setupAfterStart(background: boolean, foreground: boolean) {
 		if (background) {
 			setStages(stages => [...stages, <EditorBackground json={json} setJson={setJson} />]);
 		}
@@ -31,16 +30,18 @@ function Editor() {
 	}
 
 	return (
-		<Row gutter={23}>
-			<Col xl={8}>
+		<Row gutter={16} style={{ padding: 16, maxWidth: 1000, margin: "0 auto" }}>
+			<Col xs={14}>
 				<Card>
 					<h1>Creator</h1>
 					{stages[currentStage]}
 				</Card>
 			</Col>
-			<Col xl={16}>
-				<h1>Preview</h1>
-				</Col>
+			<Col xs={10}>
+				<Card>
+					<h1>Preview</h1>
+				</Card>
+			</Col>
 		</Row>
 	)
 }
