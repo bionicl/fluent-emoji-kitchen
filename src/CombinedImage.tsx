@@ -3,6 +3,43 @@ import mergeImages from "merge-images";
 import { useEffect, useState } from "react";
 const saveSvgAsPng = require('save-svg-as-png');
 
+
+
+function returnSvgFileFromPath(path: string) {
+	return new Promise((resolve, reject) => {
+		import(`${path}`).then(obj => {
+			fetch(obj.default)
+				.then(response => response.text())
+				.then(text => {
+					resolve(text);
+				})
+				.catch(err => {
+					reject("Error: " + err.message);
+				});
+		});
+	});
+}
+
+export async function convertSVGToPng(path: string, scale: number = 8, rotation = 0) {
+
+	const imageOptions = {
+		encoderOptions: 1,
+		scale: scale,
+	};
+
+	return new Promise(async (resolve, reject) => {
+		const svgFile: string = await returnSvgFileFromPath(path) as string;
+		var parser = new DOMParser();
+		var doc = parser.parseFromString(svgFile, "image/svg+xml");
+		let svg: SVGElement = doc.querySelector('svg') as SVGElement;
+		svg.style.transform = "rotate(" + rotation + "deg)";
+
+		saveSvgAsPng.svgAsPngUri(svg, imageOptions).then((uri: any) => {
+			resolve(uri);
+		});
+	});
+}
+
 type Props = {
 	selectedOption1?: EmojiMetadata;
 	selectedOption2?: EmojiMetadata;
@@ -18,40 +55,7 @@ const CombinedImage = ({ selectedOption1, selectedOption2, imageVer }: Props) =>
 		mergeMultiple();
 	}, [imageVer]);
 
-	function returnSvgFileFromPath(path: string) {
-		return new Promise((resolve, reject) => {
-			import(`${path}`).then(obj => {
-				fetch(obj.default)
-					.then(response => response.text())
-					.then(text => {
-						resolve(text);
-					})
-					.catch(err => {
-						reject("Error: " + err.message);
-					});
-			});
-		});
-	}
-
-	async function convertSVGToPng(path: string, scale: number = 8, rotation = 0) {
-
-		const imageOptions = {
-			encoderOptions: 1,
-			scale: scale,
-		};
-
-		return new Promise(async (resolve, reject) => {
-			const svgFile: string = await returnSvgFileFromPath(path) as string;
-			var parser = new DOMParser();
-			var doc = parser.parseFromString(svgFile, "image/svg+xml");
-			let svg: SVGElement = doc.querySelector('svg') as SVGElement;
-			svg.style.transform = "rotate(" + rotation + "deg)";
-
-			saveSvgAsPng.svgAsPngUri(svg, imageOptions).then((uri: any) => {
-				resolve(uri);
-			});
-		});
-	}
+	
 
 	async function returnPositions(option1 : EmojiMetadata, foregroundImage : string, foregroundPosition : string) {
 		let positions : EmojiPosition[] & {imageString? : string}[] = [];

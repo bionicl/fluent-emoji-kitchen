@@ -9,15 +9,16 @@ const { Text, Title } = Typography;
 type Props = {
     json: object,
 	setJson: (arg0: object) => void
+    setImagePreview: (image: string) => void
 }
 
-function EditorForeground({json, setJson} : Props) {
+function EditorForeground({json, setJson, setImagePreview} : Props) {
 
     const [stages, setStages] = useState<JSX.Element[]>([]);
 	const [currentStage, setCurrentStage] = useState(0);
 
     useEffect(() => {
-		setStages([<EditorForegroundS1 json={json} setJson={setJson}/>]);
+		setStages([<EditorForegroundS1 json={json} setJson={setJson} setImagePreview={setImagePreview} />]);
 		setCurrentStage(0);
 	}, []);
 

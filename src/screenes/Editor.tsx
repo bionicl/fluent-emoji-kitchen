@@ -9,6 +9,7 @@ function Editor() {
 	const [stages, setStages] = useState<JSX.Element[]>([]);
 	const [currentStage, setCurrentStage] = useState(0);
 	const [json, setJson] = useState({});
+	const [previewImage, setPreviewImage] = useState("");
 
 	useEffect(() => {
 		setStages([<EditorStart setJson={setJson} setupAfterStart={setupAfterStart} />]);
@@ -24,9 +25,15 @@ function Editor() {
 			setStages(stages => [...stages, <EditorBackground json={json} setJson={setJson} />]);
 		}
 		if (foreground) {
-			setStages(stages => [...stages, <EditorForeground json={json} setJson={setJson} />]);
+			setStages(stages => [...stages, <EditorForeground json={json} setJson={setJson} setImagePreview={setImagePreview}/>]);
 		}
 		nextPage();
+	}
+
+	function setImagePreview(image : string) {
+		if (image.length > 0) {
+			setPreviewImage(image);
+		}
 	}
 
 	return (
@@ -40,6 +47,9 @@ function Editor() {
 			<Col xs={10}>
 				<Card>
 					<h1>Preview</h1>
+					{previewImage && (
+						<img width={332} src={previewImage} alt="" />
+					)}
 				</Card>
 			</Col>
 		</Row>
