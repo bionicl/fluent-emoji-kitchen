@@ -1,0 +1,1 @@
+export type PreviewImageStatus = 'noImage' | 'error' | 'displayed' | 'loading'; 

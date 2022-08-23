@@ -1,31 +1,55 @@
-import { Button, Card, Checkbox, Input, Space, Typography } from "antd";
+import { Button, Card, Checkbox, Input, Select, Space, Typography } from "antd";
 import { useState } from "react";
 import { convertSVGToPng } from "../CombinedImage";
 import { EmojiMetadata } from "../types/emojiMetadata";
+import { PreviewImageStatus } from "../types/previewImageStatus";
+
 
 const { TextArea } = Input;
+const { Option } = Select;
 const { Text, Title } = Typography;
 
 type Props = {
     json: object,
 	setJson: (arg0: object) => void,
-    setImagePreview: (image: string) => void
+    setImagePreview: (image: string) => void,
+    setPreviewImagestatus: (status: PreviewImageStatus) => void
 }
 
-function EditorForegroundS1({json, setJson, setImagePreview} : Props) {
+function EditorForegroundS1({json, setJson, setImagePreview, setPreviewImagestatus} : Props) {
 
     const [image, setImage] = useState("");
+    const [imagePathStart, setImagePathStart] = useState("emoji/");
     const [imageWithFace, setImageWithFace] = useState("");
+    const [imageWithFacePathStart, setImageWithFacePathStart] = useState("parts/");
     const [overrideFace, setOverrideFace] = useState(false);
 
-    function previewImage(fileName : string) {
-        const filePath = "./screenes/svgFiles/" + fileName;
+    function previewImage(fileName : string, startPath : string) {
+        const filePath = "./screenes/svgFiles/" + startPath + fileName + ".svg";
+        setPreviewImagestatus("loading");
         return new Promise<void>(async (resolve, reject) => {
-            let png = await convertSVGToPng(filePath, 8, 0) as string;
-            setImagePreview(png);
-            resolve();
+            console.log("1");
+            await convertSVGToPng(filePath, 8, 0).then(result => {
+                console.log("2");
+                setImagePreview(result as string);
+                setPreviewImagestatus("displayed");
+                resolve();
+            })
+            .catch(error => {
+                setPreviewImagestatus("error");
+                resolve();
+                console.log("Error");
+            });
+
         });
     }
+
+    const pathOptions = (
+        <>
+            <Option value="emoji/">emoji/</Option>
+            <Option value="parts/">parts/</Option>
+        </>
+    )
 
     return (
         <Space direction="vertical">
@@ -36,26 +60,36 @@ function EditorForegroundS1({json, setJson, setImagePreview} : Props) {
             <Space>
                 <Text>Image: </Text>
                 <Input
+                    addonBefore={(
+                        <Select value={imagePathStart} onChange={(value) => {setImagePathStart(value)}}>
+                            {pathOptions}
+                        </Select>)}
+                    addonAfter=".svg"
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
-                    placeholder="emoji/fox_color.svg"
+                    placeholder="fox_color"
                 />
-                <Button onClick={() => previewImage(image)}>Preview</Button>
+                <Button type="dashed" onClick={() => previewImage(image, imagePathStart)}>Preview</Button>
             </Space>
             {overrideFace && (
                 <Space>
-                    <Text>Image with face: </Text>
+                    <Text>With face: </Text>
                     <Input
+                        addonBefore={(
+                            <Select value={imageWithFacePathStart} onChange={(value) => {setImageWithFacePathStart(value)}}>
+                                {pathOptions}
+                            </Select>)}
+                        addonAfter=".svg"
                         value={imageWithFace}
-                        placeholder="parts/fox.svg (optional)"
+                        placeholder="fox (optional)"
                         onChange={(e) => setImageWithFace(e.target.value)}
                     />
-                    <Button onClick={() => previewImage(imageWithFace)}>Preview</Button>
+                    <Button type="dashed" onClick={() => previewImage(imageWithFace, imageWithFacePathStart)}>Preview</Button>
                 </Space>
             )}
             <Button
 				type="primary"
-				disabled={!image.includes(".svg")}
+				disabled={image.length <= 1}
                 style={{marginTop: 16}}
 				// onClick={() => setupAfterStart(background, foreground)}
 				>

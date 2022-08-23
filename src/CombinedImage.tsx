@@ -16,6 +16,8 @@ function returnSvgFileFromPath(path: string) {
 				.catch(err => {
 					reject("Error: " + err.message);
 				});
+		}).catch(err => {
+			reject("Error: " + err.message);
 		});
 	});
 }
@@ -28,15 +30,20 @@ export async function convertSVGToPng(path: string, scale: number = 8, rotation 
 	};
 
 	return new Promise(async (resolve, reject) => {
-		const svgFile: string = await returnSvgFileFromPath(path) as string;
-		var parser = new DOMParser();
-		var doc = parser.parseFromString(svgFile, "image/svg+xml");
-		let svg: SVGElement = doc.querySelector('svg') as SVGElement;
-		svg.style.transform = "rotate(" + rotation + "deg)";
+		try {
+			const svgFile: string = await returnSvgFileFromPath(path) as string;
+			var parser = new DOMParser();
+			var doc = parser.parseFromString(svgFile, "image/svg+xml");
+			let svg: SVGElement = doc.querySelector('svg') as SVGElement;
+			svg.style.transform = "rotate(" + rotation + "deg)";
 
-		saveSvgAsPng.svgAsPngUri(svg, imageOptions).then((uri: any) => {
-			resolve(uri);
-		});
+			saveSvgAsPng.svgAsPngUri(svg, imageOptions).then((uri: any) => {
+				resolve(uri);
+			});
+		} catch (error) {
+			reject(error);
+		}
+		
 	});
 }
 
