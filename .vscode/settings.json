@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true,
+    "source.sortMembers": true
+  },
+  "files.exclude": {
+    "node_modules": true,
+    "package-lock.json": true
+  }
+}

@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Switch checked={editMode} onChange={(checked: boolean) => setEditMode(checked)} />
-      {editMode ? <Editor/> : <Combinator/>}
+      {editMode ? <Editor /> : <Combinator />}
     </>
   );
 }

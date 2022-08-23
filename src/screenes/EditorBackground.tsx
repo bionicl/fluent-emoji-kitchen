@@ -1,16 +1,13 @@
-import { Button, Card, Checkbox, Input, Space, Typography } from "antd";
-import { useState } from "react";
-import { EmojiMetadata } from "../types/emojiMetadata";
+import { Typography } from "antd";
 
-const { TextArea } = Input;
-const { Text, Title } = Typography;
+const { Text } = Typography;
 
 type Props = {
     json: object,
-	setJson: (arg0: object) => void
+    setJson: (arg0: object) => void
 }
 
-function EditorBackground({json, setJson} : Props) {
+function EditorBackground({ json, setJson }: Props) {
     return (
         <Text>background editor</Text>
     )

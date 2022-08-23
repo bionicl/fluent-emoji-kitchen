@@ -1,9 +1,9 @@
-import { SetStateAction, useEffect, useState } from 'react';
-import { EmojiMetadata, emojiMetadataToFilename } from './../types/emojiMetadata';
-import emojiConfig from "./../emojiConfig.json";
-import EmojiButton from './../components/EmojiButton';
-import CombinedImage from './../CombinedImage';
 import { Col, Row } from 'antd';
+import { useEffect, useState } from 'react';
+import CombinedImage from './../CombinedImage';
+import EmojiButton from './../components/EmojiButton';
+import emojiConfig from "./../emojiConfig.json";
+import { EmojiMetadata, emojiMetadataToFilename } from './../types/emojiMetadata';
 
 function Combinator() {
 
@@ -14,11 +14,10 @@ function Combinator() {
 	const [imageVer, setImageVer] = useState<number>(0);
 
 	function loadEmojiOptions() {
-		emojiConfig.baseEmoji.map((emoji, index) => {
+		emojiConfig.baseEmoji.forEach(emoji => {
 			if (!baseEmojis.find(e => e.unicode === emoji.unicode)) {
 				const fileName = emojiMetadataToFilename(emoji);
 				const filePath = "./svgFiles/emoji/" + fileName;
-				console.log(filePath);
 				import(`${filePath}`).then(obj => {
 					if (!baseEmojis.includes(obj.default)) {
 						setBaseEmojis(prevState => [...prevState, { ...emoji, url: obj.default }]);
@@ -32,19 +31,19 @@ function Combinator() {
 
 	function checkForDisabledOptions() {
 		let toDisable: EmojiMetadata[] = [];
-		if (selectedOption1 == undefined) {
+		if (selectedOption1 === undefined) {
 			baseEmojis.forEach(emoji => {
 				toDisable.push(emoji);
 			});
-		} else if (selectedOption1.background == undefined) {
+		} else if (selectedOption1.background === undefined) {
 			baseEmojis.forEach(emoji => {
-				if (emoji.background == undefined) {
+				if (emoji.background === undefined) {
 					toDisable.push(emoji);
 				}
 			});
-		} else if (selectedOption1.foreground == undefined) {
+		} else if (selectedOption1.foreground === undefined) {
 			baseEmojis.forEach(emoji => {
-				if (emoji.foreground == undefined) {
+				if (emoji.foreground === undefined) {
 					toDisable.push(emoji);
 				}
 			});
@@ -61,6 +60,7 @@ function Combinator() {
 
 	useEffect(() => {
 		loadEmojiOptions();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
@@ -68,10 +68,11 @@ function Combinator() {
 		if (selectedOption1 && selectedOption2) {
 			setImageVer(prevState => prevState + 1);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectedOption1, selectedOption2]);
 
 	return (
-		<div style={{textAlign: "center"}}>
+		<div style={{ textAlign: "center" }}>
 			<Row>
 				<Col xl={12}>
 					<h1>Emoji 1</h1>
@@ -80,8 +81,8 @@ function Combinator() {
 							return <EmojiButton emoji={emoji} selectedOption={selectedOption1} setSelectedOption={setSelectedOption1} key={index} />
 						})}
 					</div>
-					</Col>
-					<Col xl={12}>
+				</Col>
+				<Col xl={12}>
 					<h1>Emoji 2</h1>
 					<div className='emoji-container'>
 						{baseEmojis.map((emoji, index) => {
@@ -94,7 +95,7 @@ function Combinator() {
 							/>
 						})}
 					</div>
-					</Col>
+				</Col>
 			</Row>
 			<CombinedImage selectedOption1={selectedOption1} selectedOption2={selectedOption2} imageVer={imageVer} />
 		</div>

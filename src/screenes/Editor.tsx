@@ -1,4 +1,4 @@
-import { AutoComplete, Button, Card, Checkbox, Col, Divider, Input, Radio, Result, Row, Space, Spin, Typography } from "antd";
+import { Card, Col, Result, Row, Spin } from "antd";
 import { useEffect, useState } from "react";
 import { PreviewImageStatus } from "../types/previewImageStatus";
 
@@ -17,6 +17,7 @@ function Editor() {
 	useEffect(() => {
 		setStages([<EditorStart setJson={setJson} setupAfterStart={setupAfterStart} />]);
 		setCurrentStage(0);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	function nextPage() {
@@ -28,12 +29,12 @@ function Editor() {
 			setStages(stages => [...stages, <EditorBackground json={json} setJson={setJson} />]);
 		}
 		if (foreground) {
-			setStages(stages => [...stages, <EditorForeground json={json} setJson={setJson} setImagePreview={setImagePreview} setPreviewImagestatus={setPreviewImagestatus}/>]);
+			setStages(stages => [...stages, <EditorForeground json={json} setJson={setJson} setImagePreview={setImagePreview} setPreviewImagestatus={setPreviewImagestatus} />]);
 		}
 		nextPage();
 	}
 
-	function setImagePreview(image : string) {
+	function setImagePreview(image: string) {
 		if (image.length > 0) {
 			setPreviewImage(image);
 		}

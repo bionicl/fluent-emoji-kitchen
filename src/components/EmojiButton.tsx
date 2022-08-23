@@ -7,7 +7,7 @@ type Props = {
 	disabled?: boolean;
 }
 
-const EmojiButton = ({emoji, selectedOption, setSelectedOption, disabled} : Props) => {
+const EmojiButton = ({ emoji, selectedOption, setSelectedOption, disabled }: Props) => {
 	let isSelected = selectedOption === emoji;
 	let className = isSelected ? "emoji-box selected" : "emoji-box";
 
@@ -16,7 +16,7 @@ const EmojiButton = ({emoji, selectedOption, setSelectedOption, disabled} : Prop
 			disabled={disabled}
 			className={className}
 			onClick={() => setSelectedOption(emoji)}>
-			<img key={emoji.unicode} src={emoji.url} draggable={"false"} />
+			<img alt={emoji.tts} key={emoji.unicode} src={emoji.url} draggable={"false"} />
 		</button>
 	)
 

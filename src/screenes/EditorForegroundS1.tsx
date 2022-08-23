@@ -1,22 +1,20 @@
-import { Button, Card, Checkbox, Input, Select, Space, Typography } from "antd";
+import { Button, Checkbox, Input, Select, Space, Typography } from "antd";
 import { useState } from "react";
 import { convertSVGToPng } from "../CombinedImage";
-import { EmojiMetadata } from "../types/emojiMetadata";
 import { PreviewImageStatus } from "../types/previewImageStatus";
 
 
-const { TextArea } = Input;
 const { Option } = Select;
 const { Text, Title } = Typography;
 
 type Props = {
     json: object,
-	setJson: (arg0: object) => void,
+    setJson: (arg0: object) => void,
     setImagePreview: (image: string) => void,
     setPreviewImagestatus: (status: PreviewImageStatus) => void
 }
 
-function EditorForegroundS1({json, setJson, setImagePreview, setPreviewImagestatus} : Props) {
+function EditorForegroundS1({ json, setJson, setImagePreview, setPreviewImagestatus }: Props) {
 
     const [image, setImage] = useState("");
     const [imagePathStart, setImagePathStart] = useState("emoji/");
@@ -24,7 +22,7 @@ function EditorForegroundS1({json, setJson, setImagePreview, setPreviewImagestat
     const [imageWithFacePathStart, setImageWithFacePathStart] = useState("parts/");
     const [overrideFace, setOverrideFace] = useState(false);
 
-    function previewImage(fileName : string, startPath : string) {
+    function previewImage(fileName: string, startPath: string) {
         const filePath = "./screenes/svgFiles/" + startPath + fileName + ".svg";
         setPreviewImagestatus("loading");
         return new Promise<void>(async (resolve, reject) => {
@@ -35,11 +33,11 @@ function EditorForegroundS1({json, setJson, setImagePreview, setPreviewImagestat
                 setPreviewImagestatus("displayed");
                 resolve();
             })
-            .catch(error => {
-                setPreviewImagestatus("error");
-                resolve();
-                console.log("Error");
-            });
+                .catch(error => {
+                    setPreviewImagestatus("error");
+                    resolve();
+                    console.log("Error");
+                });
 
         });
     }
@@ -54,14 +52,14 @@ function EditorForegroundS1({json, setJson, setImagePreview, setPreviewImagestat
     return (
         <Space direction="vertical">
             <Title level={4}>Settings</Title>
-            <Checkbox value={overrideFace} onChange={(e) => setOverrideFace(e.target.checked)}>Override face</Checkbox>
+            <Checkbox checked={overrideFace} onChange={(e) => setOverrideFace(e.target.checked)}>Override face</Checkbox>
             <Text type="secondary">If background image does not have face, optional image with face will be used</Text>
             <Title level={4}>Images</Title>
             <Space>
                 <Text>Image: </Text>
                 <Input
                     addonBefore={(
-                        <Select value={imagePathStart} onChange={(value) => {setImagePathStart(value)}}>
+                        <Select value={imagePathStart} onChange={(value) => { setImagePathStart(value) }}>
                             {pathOptions}
                         </Select>)}
                     addonAfter=".svg"
@@ -76,7 +74,7 @@ function EditorForegroundS1({json, setJson, setImagePreview, setPreviewImagestat
                     <Text>With face: </Text>
                     <Input
                         addonBefore={(
-                            <Select value={imageWithFacePathStart} onChange={(value) => {setImageWithFacePathStart(value)}}>
+                            <Select value={imageWithFacePathStart} onChange={(value) => { setImageWithFacePathStart(value) }}>
                                 {pathOptions}
                             </Select>)}
                         addonAfter=".svg"
@@ -88,13 +86,13 @@ function EditorForegroundS1({json, setJson, setImagePreview, setPreviewImagestat
                 </Space>
             )}
             <Button
-				type="primary"
-				disabled={image.length <= 1}
-                style={{marginTop: 16}}
-				// onClick={() => setupAfterStart(background, foreground)}
-				>
-					Next
-			</Button>
+                type="primary"
+                disabled={image.length <= 1}
+                style={{ marginTop: 16 }}
+            // onClick={() => setupAfterStart(background, foreground)}
+            >
+                Next
+            </Button>
         </Space>
 
     )
