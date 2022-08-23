@@ -14,7 +14,7 @@ type Props = {
 
 function EditorForeground({ json, setJson, setImagePreview, setPreviewImagestatus }: Props) {
 
-    const [stages, setStages] = useState<EditorForegroundStage[]>(["start"]);
+    const [stages, setStages] = useState<EditorForegroundStage[]>(["start", "position"]);
     const [currentStage, setCurrentStage] = useState(0);
 
     function nextPage() {
@@ -24,10 +24,21 @@ function EditorForeground({ json, setJson, setImagePreview, setPreviewImagestatu
     function returnStage() {
         switch (stages[currentStage]) {
             case "start":
-                return <EditorForegroundS1 json={json} setJson={setJson} setImagePreview={setImagePreview} setPreviewImagestatus={setPreviewImagestatus} />;
+                return <EditorForegroundS1
+                    json={json}
+                    setJson={setJson}
+                    setImagePreview={setImagePreview}
+                    setPreviewImagestatus={setPreviewImagestatus}
+                    nextPage={nextPage}
+                />;
 
             case "position":
-                return <EditorForegroundS2 json={json!} setJson={setJson} setImagePreview={setImagePreview} setPreviewImagestatus={setPreviewImagestatus} />
+                return <EditorForegroundS2
+                    json={json!}
+                    setJson={setJson}
+                    setImagePreview={setImagePreview}
+                    setPreviewImagestatus={setPreviewImagestatus}
+                    nextPage={nextPage} />
 
             default:
                 return (<p>No stage</p>);

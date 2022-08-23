@@ -1,3 +1,4 @@
+
 export type EmojiMetadata = {
 	// from Microsoft
 	cldr: string,
@@ -35,6 +36,10 @@ export type EmojiPosition = {
 	size: number,
 }
 
-export function emojiMetadataToFilename(metadata: EmojiMetadata): string {
-	return `${metadata.tts.replaceAll(" ", "_")}_color.svg`
+export function emojiMetadataToFilename(metadata: EmojiMetadata, withSVG: boolean = true): string {
+	let output = `${metadata.tts.replaceAll(" ", "_")}_color`;
+	if (withSVG) {
+		output += ".svg";
+	}
+	return output
 }

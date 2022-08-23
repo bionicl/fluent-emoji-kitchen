@@ -1,0 +1,1 @@
+export type EmojiForegroundPosition = "top" | "middle" | "top_right" | "above_face";

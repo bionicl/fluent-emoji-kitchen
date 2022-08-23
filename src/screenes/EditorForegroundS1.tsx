@@ -1,7 +1,7 @@
 import { Button, Checkbox, Input, Select, Space, Typography } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { convertSVGToPng } from "../CombinedImage";
-import { EmojiMetadata } from "../types/emojiMetadata";
+import { EmojiMetadata, emojiMetadataToFilename } from "../types/emojiMetadata";
 import { PreviewImageStatus } from "../types/previewImageStatus";
 
 
@@ -19,16 +19,22 @@ type Props = {
     json: EmojiMetadata,
     setJson: (arg0: EmojiMetadata) => void,
     setImagePreview: (image: string) => void,
-    setPreviewImagestatus: (status: PreviewImageStatus) => void
+    setPreviewImagestatus: (status: PreviewImageStatus) => void,
+    nextPage: () => void,
 }
 
-function EditorForegroundS1({ json, setJson, setImagePreview, setPreviewImagestatus }: Props) {
+function EditorForegroundS1({ json, setJson, setImagePreview, setPreviewImagestatus, nextPage }: Props) {
 
     const [image, setImage] = useState("");
     const [imagePathStart, setImagePathStart] = useState("emoji/");
     const [imageWithFace, setImageWithFace] = useState("");
     const [imageWithFacePathStart, setImageWithFacePathStart] = useState("parts/");
     const [overrideFace, setOverrideFace] = useState(false);
+
+    useEffect(() => {
+        setImage(emojiMetadataToFilename(json, false));
+        previewImage(emojiMetadataToFilename(json, false), "emoji/");
+    }, []);
 
     function previewImage(fileName: string, startPath: string) {
         const filePath = "./screenes/svgFiles/" + startPath + fileName + ".svg";
@@ -57,6 +63,7 @@ function EditorForegroundS1({ json, setJson, setImagePreview, setPreviewImagesta
         }
 
         setJson(newJson);
+        nextPage();
     }
 
     return (
