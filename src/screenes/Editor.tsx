@@ -1,35 +1,42 @@
 import { Card, Col, Result, Row, Spin } from "antd";
 import { useEffect, useState } from "react";
+import { EditorStage } from "../types/editorStage";
+import { EmojiMetadata } from "../types/emojiMetadata";
 import { PreviewImageStatus } from "../types/previewImageStatus";
-
 import EditorBackground from "./EditorBackground";
+
 import EditorForeground from "./EditorForeground";
 import EditorStart from "./EditorStart";
 
 function Editor() {
 
-	const [stages, setStages] = useState<JSX.Element[]>([]);
+	const [stages, setStages] = useState<EditorStage[]>(["start"]);
 	const [currentStage, setCurrentStage] = useState(0);
-	const [json, setJson] = useState({});
+	const [json, setJson] = useState<EmojiMetadata>();
 	const [previewImage, setPreviewImage] = useState("");
 	const [previewImageStatus, setPreviewImagestatus] = useState<PreviewImageStatus>("noImage");
 
+	// function tempSetJson(json: EmojiMetadata) {
+	// 	console.log("PRE: " + JSON.stringify(json));
+	// 	setJson(json);
+	// 	console.log("POST: " + JSON.stringify(json));
+	// }
+
 	useEffect(() => {
-		setStages([<EditorStart setJson={setJson} setupAfterStart={setupAfterStart} />]);
-		setCurrentStage(0);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+		console.log("JSON updated: " + JSON.stringify(json));
+	}, [json]);
 
 	function nextPage() {
 		setCurrentStage(currentStage + 1);
 	}
 
-	function setupAfterStart(background: boolean, foreground: boolean) {
-		if (background) {
-			setStages(stages => [...stages, <EditorBackground json={json} setJson={setJson} />]);
-		}
+	function setupAfterStart(background: boolean, foreground: boolean, newJson: EmojiMetadata) {
+		setJson(newJson);
+		// if (background) {
+		// 	setStages(stages => [...stages, <EditorBackground json={json} setJson={setJson} />]);
+		// }
 		if (foreground) {
-			setStages(stages => [...stages, <EditorForeground json={json} setJson={setJson} setImagePreview={setImagePreview} setPreviewImagestatus={setPreviewImagestatus} />]);
+			setStages(stages => [...stages, "foreground"]);
 		}
 		nextPage();
 	}
@@ -37,6 +44,22 @@ function Editor() {
 	function setImagePreview(image: string) {
 		if (image.length > 0) {
 			setPreviewImage(image);
+		}
+	}
+
+	function returnStage() {
+		switch (stages[currentStage]) {
+			case "start":
+				return <EditorStart setupAfterStart={setupAfterStart} />;
+
+			case "foreground":
+				return <EditorForeground json={json!} setJson={setJson} setImagePreview={setImagePreview} setPreviewImagestatus={setPreviewImagestatus} />
+
+			case "background":
+				return <EditorBackground json={json!} setJson={setJson} />;
+
+			default:
+				return (<p>No stage</p>);
 		}
 	}
 
@@ -72,7 +95,9 @@ function Editor() {
 			<Col xs={14}>
 				<Card>
 					<h1>Creator</h1>
-					{stages[currentStage]}
+					{returnStage()}
+					<p>Editor: {JSON.stringify(json)}</p>
+					{/* <Button onClick={() => setJson({test: "test"})}>Add to JSON editor</Button> */}
 				</Card>
 			</Col>
 			<Col xs={10}>

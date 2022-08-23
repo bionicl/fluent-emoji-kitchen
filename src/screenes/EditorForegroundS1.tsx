@@ -1,15 +1,23 @@
 import { Button, Checkbox, Input, Select, Space, Typography } from "antd";
 import { useState } from "react";
 import { convertSVGToPng } from "../CombinedImage";
+import { EmojiMetadata } from "../types/emojiMetadata";
 import { PreviewImageStatus } from "../types/previewImageStatus";
 
 
 const { Option } = Select;
 const { Text, Title } = Typography;
 
+const pathOptions = (
+    <>
+        <Option value="emoji/">emoji/</Option>
+        <Option value="parts/">parts/</Option>
+    </>
+)
+
 type Props = {
-    json: object,
-    setJson: (arg0: object) => void,
+    json: EmojiMetadata,
+    setJson: (arg0: EmojiMetadata) => void,
     setImagePreview: (image: string) => void,
     setPreviewImagestatus: (status: PreviewImageStatus) => void
 }
@@ -26,9 +34,7 @@ function EditorForegroundS1({ json, setJson, setImagePreview, setPreviewImagesta
         const filePath = "./screenes/svgFiles/" + startPath + fileName + ".svg";
         setPreviewImagestatus("loading");
         return new Promise<void>(async (resolve, reject) => {
-            console.log("1");
             await convertSVGToPng(filePath, 8, 0).then(result => {
-                console.log("2");
                 setImagePreview(result as string);
                 setPreviewImagestatus("displayed");
                 resolve();
@@ -36,18 +42,22 @@ function EditorForegroundS1({ json, setJson, setImagePreview, setPreviewImagesta
                 .catch(error => {
                     setPreviewImagestatus("error");
                     resolve();
-                    console.log("Error");
                 });
 
         });
     }
 
-    const pathOptions = (
-        <>
-            <Option value="emoji/">emoji/</Option>
-            <Option value="parts/">parts/</Option>
-        </>
-    )
+    function submit() {
+        let newJson = { ...json };
+        newJson.foreground = {
+            image: imagePathStart + image + ".svg",
+            overrideFace: overrideFace,
+            imageWithFace: imageWithFace ? imageWithFacePathStart + imageWithFace + ".svg" : undefined,
+            position: "middle"
+        }
+
+        setJson(newJson);
+    }
 
     return (
         <Space direction="vertical">
@@ -89,7 +99,7 @@ function EditorForegroundS1({ json, setJson, setImagePreview, setPreviewImagesta
                 type="primary"
                 disabled={image.length <= 1}
                 style={{ marginTop: 16 }}
-            // onClick={() => setupAfterStart(background, foreground)}
+                onClick={() => submit()}
             >
                 Next
             </Button>

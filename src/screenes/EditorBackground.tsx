@@ -1,10 +1,11 @@
 import { Typography } from "antd";
+import { EmojiMetadata } from "../types/emojiMetadata";
 
 const { Text } = Typography;
 
 type Props = {
-    json: object,
-    setJson: (arg0: object) => void
+    json: EmojiMetadata,
+    setJson: (arg0: EmojiMetadata) => void
 }
 
 function EditorBackground({ json, setJson }: Props) {
